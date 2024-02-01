@@ -7,4 +7,5 @@ class ColorConstant {
   static const Color Primary = Color(0xFF7FC7D9);
   static const Color DarkPrimary = Color.fromARGB(255, 17, 61, 108);
   static const Color GreyColor = Colors.blueGrey;
+  static const Color WhiteColor = Colors.white;
 }

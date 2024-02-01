@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
 
 import '../controllers/login_controller.dart';
@@ -20,10 +21,13 @@ class LoginView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-            top: MediaQuery.of(context).size.height * 0.2,
+            top: MediaQuery.of(context).size.height * 0.1,
           ),
           child: Column(
             children: [
+              Lottie.asset('assets/booklogin.json',
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  height: MediaQuery.of(context).size.height / 5),
               Container(
                 margin: EdgeInsets.all(20.0),
                 padding: EdgeInsets.all(5.0),
@@ -149,7 +153,9 @@ class LoginView extends StatelessWidget {
                 ],
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed('/forgot-password');
+                },
                 child: const Text(
                   "Forgot Password?",
                   style: TextStyle(

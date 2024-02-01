@@ -44,25 +44,19 @@ class LoginController extends GetxController {
           headers: {'Content-Type': 'application/json'},
           body: json.encode({'email': email, 'password': password}));
 
-      print(response.body); // Cetak respons dari permintaan HTTP
+      print(response.body);
 
       final responseData = json.decode(response.body);
 
-      // Handle response based on your API structure
       if (response.statusCode == 200) {
-        // Login successful, handle token or other data
         final token = responseData['token'];
         Get.snackbar('Success', 'Login successful');
         Get.offAllNamed('/home');
-        // Lakukan sesuatu dengan token, seperti menyimpannya di SharedPreferences
       } else {
-        // Login failed, handle error message
         final errorMessage = responseData['message'];
         Get.snackbar('Error', errorMessage);
-        // Tampilkan pesan error kepada pengguna
       }
     } catch (error) {
-      // Tangani error
       print(error.toString());
       Get.snackbar('Error', 'An error occurred');
     }
