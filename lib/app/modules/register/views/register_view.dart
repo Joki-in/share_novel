@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
-
 import '../controllers/register_controller.dart';
 
-class RegisterView extends GetView<RegisterController> {
+class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final RegisterController controller = Get.put(RegisterController());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register'),
@@ -43,6 +44,8 @@ class RegisterView extends GetView<RegisterController> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: controller
+                          .usernameController, // Controller untuk username
                       decoration: InputDecoration(
                         hintText: 'Enter Username',
                         border: InputBorder.none,
@@ -79,6 +82,8 @@ class RegisterView extends GetView<RegisterController> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: controller
+                          .alamatController, // Controller untuk alamat
                       decoration: InputDecoration(
                         hintText: 'Alamat',
                         border: InputBorder.none,
@@ -116,6 +121,8 @@ class RegisterView extends GetView<RegisterController> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller:
+                          controller.emailController, // Controller untuk email
                       decoration: InputDecoration(
                         hintText: 'Email',
                         border: InputBorder.none,
@@ -150,6 +157,8 @@ class RegisterView extends GetView<RegisterController> {
                   children: [
                     Expanded(
                       child: TextField(
+                        controller: controller
+                            .passwordController, // Controller untuk password
                         keyboardType: TextInputType.text,
                         obscureText: controller.obscureText.value,
                         decoration: InputDecoration(
@@ -187,7 +196,9 @@ class RegisterView extends GetView<RegisterController> {
                   minimumSize: Size(
                       double.infinity, 50), // Menentukan ukuran minimum tombol
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  controller.registerUser();
+                },
                 child: const Text(
                   "Register",
                   style: TextStyle(fontSize: 20, color: Colors.white),
