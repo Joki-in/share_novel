@@ -77,7 +77,7 @@ class OtpController extends GetxController {
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
-                    Get.toNamed('/resetPassword');
+                    Get.toNamed('/reset-password');
                   },
                   child: Center(child: Text('OK')),
                 ),
