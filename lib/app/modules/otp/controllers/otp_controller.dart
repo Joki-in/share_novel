@@ -15,9 +15,6 @@ class OtpController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    final prefs = await SharedPreferences.getInstance();
-    String? email = prefs.getString('email');
-    print(email);
   }
 
   @override

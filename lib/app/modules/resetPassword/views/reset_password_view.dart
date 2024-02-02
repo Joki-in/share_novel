@@ -28,7 +28,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
               padding: const EdgeInsets.all(8.0),
               child: Obx(() => TextFormField(
                     obscureText: !controller.showPassword.value,
-                    // controller: controller.passwordController,
+                    onChanged: (value) => controller.password.value = value,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       border: OutlineInputBorder(),
@@ -42,7 +42,8 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
               padding: const EdgeInsets.all(8.0),
               child: Obx(() => TextFormField(
                     obscureText: !controller.showPassword.value,
-                    // controller: controller.confirmPasswordController,
+                    onChanged: (value) =>
+                        controller.confirmPassword.value = value,
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
                       border: OutlineInputBorder(),
@@ -50,6 +51,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                         borderSide: BorderSide(color: ColorConstant.Primary),
                       ),
                     ),
+                    controller: controller.passwordController,
                   )),
             ),
             const SizedBox(
@@ -82,17 +84,21 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
             ),
             ElevatedButton(
               onPressed: () {
-                // controller.resetPassword();
+                if (controller.arePasswordsMatching()) {
+                  controller.changePassword();
+                } else {
+                  controller.showPasswordMismatchSnackbar();
+                }
               },
-              child: const Text(
-                'Reset Password',
-                style: TextStyle(color: ColorConstant.WhiteColor),
-              ),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 backgroundColor: ColorConstant.Primary,
+              ),
+              child: const Text(
+                'Reset Password',
+                style: TextStyle(color: ColorConstant.WhiteColor),
               ),
             ),
           ],
