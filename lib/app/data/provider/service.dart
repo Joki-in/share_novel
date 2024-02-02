@@ -5,4 +5,7 @@ class Api {
   static const String forgotPassword = '${baseUrl}forgot-password';
   static const String otp = '${baseUrl}check-otp';
   static const String resetPassword = '${baseUrl}reset-password';
+  static const String profile = '${baseUrl}profile';
+  static const String img = 'http://sharenovel.wdmif.id/';
+  static const String fotoprofile = '${img}fotouser/';
 }

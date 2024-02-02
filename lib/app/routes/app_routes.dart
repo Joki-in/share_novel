@@ -9,6 +9,9 @@ abstract class Routes {
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const OTP = _Paths.OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const TAMBAH_NOVEL = _Paths.TAMBAH_NOVEL;
+  static const PROFILE = _Paths.PROFILE;
+  static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
 }
 
 abstract class _Paths {
@@ -19,4 +22,7 @@ abstract class _Paths {
   static const FORGOT_PASSWORD = '/forgot-password';
   static const OTP = '/otp';
   static const RESET_PASSWORD = '/reset-password';
+  static const TAMBAH_NOVEL = '/tambah-novel';
+  static const PROFILE = '/profile';
+  static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
 }
