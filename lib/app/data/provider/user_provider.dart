@@ -6,7 +6,6 @@ import 'package:share_novel/app/data/models/user_model.dart';
 import 'dart:convert';
 
 import 'package:share_novel/app/data/provider/service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UserProvider extends GetxController {
   Rx<User?> user = Rx<User?>(null);

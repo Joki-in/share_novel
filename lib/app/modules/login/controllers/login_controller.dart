@@ -10,7 +10,8 @@ class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final count = 0.obs;
+  final isLoading = false
+      .obs; // Variabel untuk menunjukkan apakah proses login sedang berlangsung
 
   @override
   void onInit() {
@@ -27,13 +28,14 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
-
   void togglePasswordVisibility() {
     obscureText.value = !obscureText.value;
   }
 
   Future<void> loginUser() async {
+    isLoading.value =
+        true; // Atur isLoading menjadi true saat proses login dimulai
+
     final url = Uri.parse(Api.login);
 
     try {
@@ -48,7 +50,7 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final token = responseData['token'];
-
+        print(token);
         // Simpan token ke SharedPreferences
         await saveTokenToSharedPreferences(token);
 
@@ -61,6 +63,9 @@ class LoginController extends GetxController {
     } catch (error) {
       print(error.toString());
       Get.snackbar('Error', 'An error occurred');
+    } finally {
+      isLoading.value =
+          false; // Atur isLoading menjadi false setelah proses login selesai
     }
   }
 

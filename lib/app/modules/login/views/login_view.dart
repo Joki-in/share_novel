@@ -164,6 +164,11 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
               ),
+              Obx(() {
+                return loginController.isLoading.value
+                    ? CircularProgressIndicator()
+                    : SizedBox();
+              }),
             ],
           ),
         ),
