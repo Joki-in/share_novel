@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel_slider/flutter_custom_carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_novel/app/data/models/buku_model.dart';
 import 'package:share_novel/app/modules/home/controllers/home_controller.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -70,13 +69,8 @@ class SliderWidget extends StatelessWidget {
                               color: Colors.white,
                             ),
                             leftSubtitle: "Like " + buku.like.toString() ?? '',
-                            leftSubtitleTextStyle: GoogleFonts.roboto(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                            rightSubtitle: "View " + buku.view.toString() ?? '',
-                            rightSubtitleTextStyle: GoogleFonts.roboto(
-                              fontSize: 14,
+                            leftSubtitleTextStyle: GoogleFonts.prostoOne(
+                              fontSize: 24,
                               color: Colors.white,
                             ),
                             onImageTap: (i) {},

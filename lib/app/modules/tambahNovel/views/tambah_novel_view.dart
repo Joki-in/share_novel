@@ -13,10 +13,15 @@ class TambahNovelView extends GetView<TambahNovelController> {
         title: const Text('TambahNovelView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'TambahNovelView is working',
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: TextFormField(
+          maxLines: null, // Teks akan tumbuh sesuai kebutuhan
+          keyboardType: TextInputType.multiline,
+          decoration: InputDecoration(
+            labelText: 'Write your long text here',
+            border: OutlineInputBorder(),
+          ),
         ),
       ),
     );

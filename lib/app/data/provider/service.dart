@@ -17,4 +17,5 @@ class Api {
 
   //dashboadr api
   static const String topLike = '${api}top-like';
+  static const String topView = '${api}top-view';
 }
