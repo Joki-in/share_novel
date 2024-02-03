@@ -16,6 +16,8 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/resetPassword/bindings/reset_password_binding.dart';
 import '../modules/resetPassword/views/reset_password_view.dart';
+import '../modules/searchPage/bindings/search_page_binding.dart';
+import '../modules/searchPage/views/search_page_view.dart';
 import '../modules/tambahNovel/bindings/tambah_novel_binding.dart';
 import '../modules/tambahNovel/views/tambah_novel_view.dart';
 
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.BOTTOM_NAV_BAR,
       page: () => const BottomNavBarView(),
       binding: BottomNavBarBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_PAGE,
+      page: () => const SearchPageView(),
+      binding: SearchPageBinding(),
     ),
   ];
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import 'package:share_novel/app/modules/forgotPassword/controllers/forgot_password_controller.dart';
 
 import '../controllers/otp_controller.dart';
 

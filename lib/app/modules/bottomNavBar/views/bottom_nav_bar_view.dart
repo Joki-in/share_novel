@@ -21,7 +21,11 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search Novel',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.book),
