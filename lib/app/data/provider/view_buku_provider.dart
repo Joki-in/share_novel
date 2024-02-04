@@ -1,36 +1,24 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:share_novel/app/data/models/buku_model.dart';
+import 'package:share_novel/app/data/models/view_model.dart';
 import 'package:share_novel/app/data/provider/service.dart';
 
-class ViewBukuProvider with ChangeNotifier {
-  List<Buku>? _listBuku;
+class ViewBukuProvider {
+  Future<ViewModel> getBukuTerbanyakView() async {
+    Uri url = Uri.parse(Api.topView); // Mengonversi String menjadi Uri
 
-  List<Buku>? get listBuku => _listBuku;
+    var response = await http.get(url);
 
-  set listBuku(List<Buku>? newList) {
-    _listBuku = newList;
-    notifyListeners();
-  }
-
-  Future<void> fetchDataFromApi() async {
-    final url = Uri.parse(Api.topView);
-
-    try {
-      final response = await http.get(url);
-
-      if (response.statusCode == 200) {
-        final jsonData = json.decode(response.body);
-        _listBuku = (jsonData['data'] as List)
-            .map((item) => Buku.fromJson(item))
-            .toList();
-        notifyListeners();
-      } else {
-        throw Exception('Failed to load data');
-      }
-    } catch (error) {
-      throw Exception('Failed to fetch data: $error');
+    if (response.statusCode == 200) {
+      Map<String, dynamic> responseBody = json.decode(response.body);
+      // print('Response: ${response.body}');
+      return ViewModel.fromJson(responseBody);
+    } else {
+      print('Error: ${response.reasonPhrase}');
+      throw Exception('Failed to load Buku');
     }
   }
 }

@@ -13,7 +13,7 @@ class BukuProvider extends GetConnect {
       print('Error: ${response.statusText}');
       return Future.error(response.statusText!);
     } else {
-      print('Response: ${response.bodyString}');
+      // print('Response: ${response.bodyString}');
       return Buku.fromJson(response.body);
     }
   }

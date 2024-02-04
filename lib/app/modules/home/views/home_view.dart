@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:share_novel/app/modules/components/slider.dart';
-import 'package:share_novel/app/modules/components/top_view_container.dart';
+import 'package:share_novel/app/modules/home/controllers/home_controller.dart';
+import 'package:share_novel/app/modules/home/controllers/top_view_controller_controller.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
-
-import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final TopViewController topController = Get.put(TopViewController());
+    final HomeController homeController = Get.put(HomeController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstant.Primary,
@@ -39,9 +41,13 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
+      body: RefreshIndicator(
+        onRefresh: () async {
+          topController.fetchBukuTerbanyakView();
+          homeController.relog();
+        },
+        child: CustomScrollView(
+          slivers: [
             SliverToBoxAdapter(
               child: Column(
                 children: [
@@ -53,7 +59,7 @@ class HomeView extends GetView<HomeController> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Novel Tepopuler',
+                        'Novel Terpopuler',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -65,92 +71,105 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-          ];
-        },
-        body: GetX<HomeController>(
-          init: HomeController(),
-          builder: (controller) {
-            return GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-              itemCount: controller.bukuList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Stack(
-                      children: [
-                        Image.network(
-                          controller.bukuList[index].cover ?? '',
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                        Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 3,
-                                    blurRadius: 7,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
+            Obx(
+              () {
+                final controller = topController;
+
+                if (controller.bukuTerbanyakView.isEmpty) {
+                  return SliverFillRemaining(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
+                return SliverPadding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final buku = controller.bukuTerbanyakView[index];
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 3,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
                               ),
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    controller.bukuList[index].judul ?? '',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Stack(
+                              children: [
+                                Image.network(
+                                  buku.cover ?? '',
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+                                Positioned.fill(
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 3,
+                                            blurRadius: 7,
+                                            offset: Offset(0, 3),
+                                          ),
+                                        ],
+                                      ),
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            buku.judul ?? '',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Text(
+                                            '${buku.view ?? 0} view',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  Spacer(),
-                                  Text(
-                                    '${controller.bukuList[index].view ?? 0} view',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      childCount: controller.bukuTerbanyakView.length,
                     ),
                   ),
                 );
               },
-            );
-          },
+            ),
+          ],
         ),
       ),
     );
