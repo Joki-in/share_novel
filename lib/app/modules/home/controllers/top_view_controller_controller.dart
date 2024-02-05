@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:share_novel/app/data/models/viewmodel_model.dart';
 import 'package:share_novel/app/data/provider/view_buku_provider.dart';
-import 'package:share_novel/app/modules/home/controllers/home_controller.dart';
 
 class TopViewController extends GetxController {
   final _bukuTerbanyakView = RxList<Data>(); // Change to RxList<Data>
@@ -28,6 +27,7 @@ class TopViewController extends GetxController {
   void fetchBukuTerbanyakView() async {
     try {
       var view = await ViewBukuProvider().getBukuTerbanyakView();
+      // ignore: unnecessary_null_comparison
       if (view != null && view.data != null && view.data!.isNotEmpty) {
         _bukuTerbanyakView
             .assignAll(view.data!); // Menggunakan assignAll untuk mengisi data

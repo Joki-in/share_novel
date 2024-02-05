@@ -8,6 +8,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/novelpage/bindings/novelpage_binding.dart';
+import '../modules/novelpage/views/novelpage_view.dart';
 import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -26,7 +28,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.NOVELPAGE;
 
   static final routes = [
     GetPage(
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.SEARCH_PAGE,
       page: () => const SearchPageView(),
       binding: SearchPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOVELPAGE,
+      page: () => const NovelpageView(),
+      binding: NovelpageBinding(),
     ),
   ];
 }

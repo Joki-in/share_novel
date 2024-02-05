@@ -19,6 +19,7 @@ dependencies:
   image_picker: ^1.0.7
   flutter_custom_carousel_slider: ^1.2.0
   shimmer: ^3.0.0
+  carbon_icons: ^0.0.1+2
   
 
 dev_dependencies: 

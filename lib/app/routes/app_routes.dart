@@ -13,6 +13,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
   static const SEARCH_PAGE = _Paths.SEARCH_PAGE;
+  static const NOVELPAGE = _Paths.NOVELPAGE;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
   static const SEARCH_PAGE = '/search-page';
+  static const NOVELPAGE = '/novelpage';
 }
