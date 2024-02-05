@@ -15,7 +15,10 @@ class Api {
   static const String updateFotoProfile = '${api}update-fotoprofile';
   static const String fotoprofile = '${baseUrl}fotouser/';
 
-  //dashboadr api
+  //dashboard api
   static const String topLike = '${api}top-like';
   static const String topView = '${api}top-view';
+
+  //search api
+  static const String search = '${api}search2';
 }

@@ -10,4 +10,6 @@ class ColorConstant {
   static const Color WhiteColor = Colors.white;
   static const Color Danger = Colors.red;
   static const Color Success = Color.fromARGB(255, 134, 215, 137);
+  static const Color Abu = Color(
+      0xFFE0E0E0); // Nilai ini merupakan warna abu-abu yang setara dengan Colors.grey[200]
 }

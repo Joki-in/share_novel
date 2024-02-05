@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'package:share_novel/app/data/models/buku_model.dart';
+
 import 'package:share_novel/app/data/models/view_model.dart';
 import 'package:share_novel/app/data/provider/service.dart';
 

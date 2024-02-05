@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
 import 'package:share_novel/app/data/models/buku_model.dart';
 import 'package:share_novel/app/data/provider/service.dart';
 

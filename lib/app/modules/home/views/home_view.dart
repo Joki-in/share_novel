@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:share_novel/app/modules/components/appbar.dart';
 import 'package:share_novel/app/modules/components/slider.dart';
 import 'package:share_novel/app/modules/home/controllers/home_controller.dart';
 import 'package:share_novel/app/modules/home/controllers/top_view_controller_controller.dart';
@@ -15,31 +16,10 @@ class HomeView extends GetView<HomeController> {
     final HomeController homeController = Get.put(HomeController());
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: const CustomAppBar(
+        title: 'Share Novels',
         backgroundColor: ColorConstant.Primary,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 15.0),
-          child: Row(
-            children: [
-              Lottie.asset(
-                'assets/booklogin.json',
-                height: 40,
-                width: 40,
-              ),
-              const SizedBox(width: 10),
-              const Text(
-                'Share Novels',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: ColorConstant.DarkPrimary,
-                  fontSize: 20.0,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
+        lottieAssetPath: 'assets/booklogin.json',
       ),
       body: RefreshIndicator(
         onRefresh: () async {

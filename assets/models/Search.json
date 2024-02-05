@@ -1,0 +1,60 @@
+{
+    "MESSAGE": "Berhasil mendapatkan data buku.",
+    "DATA": [
+        {
+            "id": 1,
+            "judul": "Suscipit voluptatem libero quo aperiam nihil quam accusantium saepe.",
+            "sinopsis": "Voluptate id eligendi qui dolores alias. Rerum dolore necessitatibus facere quae asperiores sint. Eligendi neque cumque maxime odit. Voluptate molestias ut corrupti ab eius aut et numquam.",
+            "like": 7,
+            "view": 47,
+            "cover": "https://via.placeholder.com/640x480.png/009944?text=in",
+            "penulis_id": 1,
+            "created_at": "2024-02-04T11:35:29.000000Z",
+            "updated_at": "2024-02-04T11:35:29.000000Z"
+        },
+        {
+            "id": 2,
+            "judul": "Mollitia officiis nesciunt maxime et.",
+            "sinopsis": "Aut quis et fuga rerum adipisci. Similique quo magnam et neque. Dolor exercitationem enim mollitia minus dolor omnis aspernatur. Quibusdam aut praesentium molestiae expedita dolores architecto.",
+            "like": 5,
+            "view": 5,
+            "cover": "https://via.placeholder.com/640x480.png/006677?text=aliquam",
+            "penulis_id": 1,
+            "created_at": "2024-02-04T11:35:29.000000Z",
+            "updated_at": "2024-02-04T11:35:29.000000Z"
+        },
+        {
+            "id": 3,
+            "judul": "Et occaecati ipsa sed ex incidunt commodi dolorum.",
+            "sinopsis": "Repellendus molestiae deserunt ut itaque itaque dolorem et esse. Voluptatem alias mollitia ullam cum at ea sequi similique. Eum eaque et nam quae voluptas.",
+            "like": 35,
+            "view": 25,
+            "cover": "https://via.placeholder.com/640x480.png/006688?text=molestiae",
+            "penulis_id": 1,
+            "created_at": "2024-02-04T11:35:29.000000Z",
+            "updated_at": "2024-02-04T11:35:29.000000Z"
+        },
+        {
+            "id": 4,
+            "judul": "Qui inventore suscipit in eos neque.",
+            "sinopsis": "Ipsa libero optio quia fugiat sed ut maiores. Et ut eveniet est laboriosam alias et necessitatibus. Iusto atque nemo delectus. At sint ad est nihil qui.",
+            "like": 41,
+            "view": 4,
+            "cover": "https://via.placeholder.com/640x480.png/00dd11?text=sint",
+            "penulis_id": 1,
+            "created_at": "2024-02-04T11:35:29.000000Z",
+            "updated_at": "2024-02-04T11:35:29.000000Z"
+        },
+        {
+            "id": 5,
+            "judul": "Eos quis dicta ducimus vel.",
+            "sinopsis": "Illum magnam sapiente commodi. Labore reiciendis dolorum itaque maiores cum ut inventore et. Nesciunt aut ut rem nemo ut dolorem. At unde cum explicabo porro rerum quis voluptate.",
+            "like": 79,
+            "view": 0,
+            "cover": "https://via.placeholder.com/640x480.png/004477?text=quis",
+            "penulis_id": 1,
+            "created_at": "2024-02-04T11:35:29.000000Z",
+            "updated_at": "2024-02-04T11:35:29.000000Z"
+        }
+    ]
+}
