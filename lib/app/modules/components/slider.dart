@@ -19,7 +19,7 @@ class SliderWidget extends StatelessWidget {
           return _buildShimmerEffect();
         } else if (_homeController.bukuList.isEmpty &&
             _homeController.count.value > 0) {
-          return Text("Failed to fetch data!");
+          return const Text("Failed to fetch data!");
         } else {
           return SizedBox(
             child: Column(
@@ -68,8 +68,7 @@ class SliderWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
-                            leftSubtitle:
-                                "Like " + buku.likeCount.toString() ?? '',
+                            leftSubtitle: "Like ${buku.likeCount}",
                             leftSubtitleTextStyle: GoogleFonts.prostoOne(
                               fontSize: 24,
                               color: Colors.white,
