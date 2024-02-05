@@ -3,36 +3,33 @@
     "data": [
         {
             "id": 3,
-            "judul": "Debitis praesentium sed voluptatum rerum impedit omnis tenetur.",
-            "sinopsis": "Voluptatem quo rerum vel necessitatibus accusantium laborum. Quia eos nobis omnis blanditiis maiores vitae sed. Cumque earum ut porro illum ducimus. Quo ut omnis neque iusto.",
-            "like": 80,
-            "view": 29,
-            "cover": "https://via.placeholder.com/640x480.png/006677?text=maxime",
+            "judul": "Ea ut quidem quos omnis et.",
+            "sinopsis": "Iste minus laboriosam hic aut. Dolor et hic necessitatibus. Dolores voluptatem corporis facilis odio. Mollitia esse reiciendis quia quo soluta.",
+            "view": 74,
+            "genre": "fiksi",
+            "cover": "https://via.placeholder.com/640x480.png/006655?text=voluptate",
             "penulis_id": 1,
-            "created_at": "2024-02-03T16:30:13.000000Z",
-            "updated_at": "2024-02-03T16:30:13.000000Z"
+            "like_count": 5
         },
         {
             "id": 1,
-            "judul": "Eum officiis omnis aperiam eaque ipsum.",
-            "sinopsis": "Odit et dolores architecto. Et aut in et consectetur totam quidem reiciendis. Maiores est aut hic in.",
-            "like": 39,
-            "view": 26,
-            "cover": "https://via.placeholder.com/640x480.png/0000bb?text=aut",
+            "judul": "Enim qui dolor consectetur recusandae mollitia sunt accusantium.",
+            "sinopsis": "Eius quis ipsa veniam ut facere hic inventore voluptatibus. Nihil velit et eum distinctio asperiores qui. Numquam expedita veniam ut quia. Amet expedita corrupti ut.",
+            "view": 15,
+            "genre": "fiksi",
+            "cover": "https://via.placeholder.com/640x480.png/005500?text=assumenda",
             "penulis_id": 1,
-            "created_at": "2024-02-03T16:30:13.000000Z",
-            "updated_at": "2024-02-03T16:30:13.000000Z"
+            "like_count": 3
         },
         {
             "id": 2,
-            "judul": "Accusantium error tempora iste eum voluptas commodi atque.",
-            "sinopsis": "Consectetur et temporibus nesciunt necessitatibus nobis occaecati. Est impedit reiciendis nesciunt quidem. Sapiente aliquid excepturi vel saepe eveniet ipsum. Qui at ipsam ut illum.",
-            "like": 30,
-            "view": 54,
-            "cover": "https://via.placeholder.com/640x480.png/00bb11?text=asperiores",
+            "judul": "Veniam nihil adipisci ipsa recusandae cupiditate.",
+            "sinopsis": "Vel reprehenderit natus laudantium eos et dolores omnis dolores. Amet sit delectus consequatur in exercitationem.",
+            "view": 66,
+            "genre": "horor",
+            "cover": "https://via.placeholder.com/640x480.png/00aa66?text=quia",
             "penulis_id": 1,
-            "created_at": "2024-02-03T16:30:13.000000Z",
-            "updated_at": "2024-02-03T16:30:13.000000Z"
+            "like_count": 2
         }
     ]
 }

@@ -28,8 +28,8 @@ class DATA {
   int? id;
   String? judul;
   String? sinopsis;
-  int? like;
   int? view;
+  String? genre;
   String? cover;
   int? penulisId;
   String? createdAt;
@@ -39,8 +39,8 @@ class DATA {
       {this.id,
       this.judul,
       this.sinopsis,
-      this.like,
       this.view,
+      this.genre,
       this.cover,
       this.penulisId,
       this.createdAt,
@@ -50,8 +50,8 @@ class DATA {
     id = json['id'];
     judul = json['judul'];
     sinopsis = json['sinopsis'];
-    like = json['like'];
     view = json['view'];
+    genre = json['genre'];
     cover = json['cover'];
     penulisId = json['penulis_id'];
     createdAt = json['created_at'];
@@ -63,8 +63,8 @@ class DATA {
     data['id'] = id;
     data['judul'] = judul;
     data['sinopsis'] = sinopsis;
-    data['like'] = like;
     data['view'] = view;
+    data['genre'] = genre;
     data['cover'] = cover;
     data['penulis_id'] = penulisId;
     data['created_at'] = createdAt;

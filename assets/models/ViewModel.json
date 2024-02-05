@@ -1,13 +1,13 @@
 {
-    "MESSAGE": "Berhasil mendapatkan data buku.",
-    "DATA": [
+    "status": "success",
+    "data": [
         {
-            "id": 1,
-            "judul": "Enim qui dolor consectetur recusandae mollitia sunt accusantium.",
-            "sinopsis": "Eius quis ipsa veniam ut facere hic inventore voluptatibus. Nihil velit et eum distinctio asperiores qui. Numquam expedita veniam ut quia. Amet expedita corrupti ut.",
-            "view": 15,
+            "id": 3,
+            "judul": "Ea ut quidem quos omnis et.",
+            "sinopsis": "Iste minus laboriosam hic aut. Dolor et hic necessitatibus. Dolores voluptatem corporis facilis odio. Mollitia esse reiciendis quia quo soluta.",
+            "view": 74,
             "genre": "fiksi",
-            "cover": "https://via.placeholder.com/640x480.png/005500?text=assumenda",
+            "cover": "https://via.placeholder.com/640x480.png/006655?text=voluptate",
             "penulis_id": 1,
             "created_at": "2024-02-05T13:03:48.000000Z",
             "updated_at": "2024-02-05T13:03:48.000000Z"
@@ -24,12 +24,12 @@
             "updated_at": "2024-02-05T13:03:48.000000Z"
         },
         {
-            "id": 3,
-            "judul": "Ea ut quidem quos omnis et.",
-            "sinopsis": "Iste minus laboriosam hic aut. Dolor et hic necessitatibus. Dolores voluptatem corporis facilis odio. Mollitia esse reiciendis quia quo soluta.",
-            "view": 74,
-            "genre": "fiksi",
-            "cover": "https://via.placeholder.com/640x480.png/006655?text=voluptate",
+            "id": 5,
+            "judul": "Praesentium delectus quibusdam ut ducimus officiis dignissimos eligendi quos.",
+            "sinopsis": "Quia aspernatur a ut sunt quia quod numquam velit. Velit error mollitia qui sed vitae ex fuga. Id officia distinctio ut aut velit quisquam. Aliquam et ea error consequatur nesciunt. Id sit magni sed.",
+            "view": 46,
+            "genre": "drama",
+            "cover": "https://via.placeholder.com/640x480.png/0099cc?text=quis",
             "penulis_id": 1,
             "created_at": "2024-02-05T13:03:48.000000Z",
             "updated_at": "2024-02-05T13:03:48.000000Z"
@@ -41,17 +41,6 @@
             "view": 43,
             "genre": "drama",
             "cover": "https://via.placeholder.com/640x480.png/005544?text=nulla",
-            "penulis_id": 1,
-            "created_at": "2024-02-05T13:03:48.000000Z",
-            "updated_at": "2024-02-05T13:03:48.000000Z"
-        },
-        {
-            "id": 5,
-            "judul": "Praesentium delectus quibusdam ut ducimus officiis dignissimos eligendi quos.",
-            "sinopsis": "Quia aspernatur a ut sunt quia quod numquam velit. Velit error mollitia qui sed vitae ex fuga. Id officia distinctio ut aut velit quisquam. Aliquam et ea error consequatur nesciunt. Id sit magni sed.",
-            "view": 46,
-            "genre": "drama",
-            "cover": "https://via.placeholder.com/640x480.png/0099cc?text=quis",
             "penulis_id": 1,
             "created_at": "2024-02-05T13:03:48.000000Z",
             "updated_at": "2024-02-05T13:03:48.000000Z"

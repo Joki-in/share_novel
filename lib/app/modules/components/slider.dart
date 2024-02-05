@@ -68,7 +68,8 @@ class SliderWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
-                            leftSubtitle: "Like " + buku.like.toString() ?? '',
+                            leftSubtitle:
+                                "Like " + buku.likeCount.toString() ?? '',
                             leftSubtitleTextStyle: GoogleFonts.prostoOne(
                               fontSize: 24,
                               color: Colors.white,

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:share_novel/app/data/models/view_model.dart'; // Pastikan mengimpor model dari view_model.dart
+import 'package:share_novel/app/data/models/viewmodel_model.dart';
 import 'package:share_novel/app/data/provider/view_buku_provider.dart';
 import 'package:share_novel/app/modules/home/controllers/home_controller.dart';
 

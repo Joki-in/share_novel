@@ -15,7 +15,7 @@ class Buku {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['status'] = status;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
@@ -28,48 +28,43 @@ class Data {
   int? id;
   String? judul;
   String? sinopsis;
-  int? like;
   int? view;
+  String? genre;
   String? cover;
   int? penulisId;
-  String? createdAt;
-  String? updatedAt;
+  int? likeCount;
 
-  Data({
-    this.id,
-    this.judul,
-    this.sinopsis,
-    this.like,
-    this.view,
-    this.cover,
-    this.penulisId,
-    this.createdAt,
-    this.updatedAt,
-  });
+  Data(
+      {this.id,
+      this.judul,
+      this.sinopsis,
+      this.view,
+      this.genre,
+      this.cover,
+      this.penulisId,
+      this.likeCount});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     judul = json['judul'];
     sinopsis = json['sinopsis'];
-    like = json['like'];
     view = json['view'];
+    genre = json['genre'];
     cover = json['cover'];
     penulisId = json['penulis_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    likeCount = json['like_count'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
+    final data = <String, dynamic>{};
     data['id'] = id;
     data['judul'] = judul;
     data['sinopsis'] = sinopsis;
-    data['like'] = like;
     data['view'] = view;
+    data['genre'] = genre;
     data['cover'] = cover;
     data['penulis_id'] = penulisId;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
+    data['like_count'] = likeCount;
     return data;
   }
 }

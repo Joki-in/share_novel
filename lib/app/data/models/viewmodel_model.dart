@@ -9,14 +9,14 @@ class ViewModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data?.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -28,8 +28,8 @@ class Data {
   int? id;
   String? judul;
   String? sinopsis;
-  int? like;
   int? view;
+  String? genre;
   String? cover;
   int? penulisId;
   String? createdAt;
@@ -39,8 +39,8 @@ class Data {
       {this.id,
       this.judul,
       this.sinopsis,
-      this.like,
       this.view,
+      this.genre,
       this.cover,
       this.penulisId,
       this.createdAt,
@@ -50,8 +50,8 @@ class Data {
     id = json['id'];
     judul = json['judul'];
     sinopsis = json['sinopsis'];
-    like = json['like'];
     view = json['view'];
+    genre = json['genre'];
     cover = json['cover'];
     penulisId = json['penulis_id'];
     createdAt = json['created_at'];
@@ -59,16 +59,16 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['judul'] = this.judul;
-    data['sinopsis'] = this.sinopsis;
-    data['like'] = this.like;
-    data['view'] = this.view;
-    data['cover'] = this.cover;
-    data['penulis_id'] = this.penulisId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['judul'] = judul;
+    data['sinopsis'] = sinopsis;
+    data['view'] = view;
+    data['genre'] = genre;
+    data['cover'] = cover;
+    data['penulis_id'] = penulisId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }
