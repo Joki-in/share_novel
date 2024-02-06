@@ -8,6 +8,7 @@ import '../controllers/tambah_novel_controller.dart';
 
 class TambahNovelView extends GetView<TambahNovelController> {
   const TambahNovelView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -76,7 +76,8 @@ class SliderWidget extends StatelessWidget {
                             onImageTap: (i) {
                               Get.toNamed(
                                 "/novelpage",
-                                arguments: buku,
+                                arguments: buku
+                                    .id, // Menggunakan ID buku sebagai argumen
                               );
                             },
                           );
