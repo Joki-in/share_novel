@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:share_novel/app/modules/components/appbar.dart';
 import 'package:share_novel/app/modules/components/slider.dart';
 import 'package:share_novel/app/modules/home/controllers/home_controller.dart';

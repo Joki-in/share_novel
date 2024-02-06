@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:share_novel/app/modules/components/appbar.dart';
 import 'package:share_novel/app/modules/components/shimer_search.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
-import 'package:shimmer/shimmer.dart';
 import '../controllers/search_page_controller.dart';
 
 class SearchPageView extends GetView<SearchPageController> {
