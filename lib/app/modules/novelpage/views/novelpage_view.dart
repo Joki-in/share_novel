@@ -56,7 +56,7 @@ class NovelpageView extends GetView<NovelpageController> {
                       child: controller.novelPageBuku.value.bukus != null &&
                               controller.novelPageBuku.value.bukus!.isNotEmpty
                           ? Image.network(
-                              controller.novelPageBuku.value.bukus![0]?.cover ??
+                              controller.novelPageBuku.value.bukus![0].cover ??
                                   '',
                               width: double.infinity,
                               height: double.infinity,
@@ -83,17 +83,17 @@ class NovelpageView extends GetView<NovelpageController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            controller.novelPageBuku.value.bukus?[0]?.judul ??
+                            controller.novelPageBuku.value.bukus?[0].judul ??
                                 'Unknown', // Null check here
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                             ),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -121,10 +121,10 @@ class NovelpageView extends GetView<NovelpageController> {
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                controller.novelPageBuku.value.bukus?[0]?.view
+                                controller.novelPageBuku.value.bukus?[0].view
                                         ?.toString() ??
                                     '0', // Null check here
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
                                   color: ColorConstant.Primary,
@@ -132,29 +132,28 @@ class NovelpageView extends GetView<NovelpageController> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
-                            'Penulis: ${controller.novelPageBuku.value.bukus?[0]?.penulis?.name ?? 'Unknown'}', // Null check here
-                            style: TextStyle(
+                            'Penulis: ${controller.novelPageBuku.value.bukus?[0].penulis?.name ?? 'Unknown'}', // Null check here
+                            style: const TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
                           Text(
-                            "Genre : ${controller.novelPageBuku.value.bukus?[0].genre}" ??
-                                'Unknown', // Null check here
-                            style: TextStyle(
+                            "Genre : ${controller.novelPageBuku.value.bukus?[0].genre}", // Null check here
+                            style: const TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             controller.novelPageBuku.value.bukus?[0].sinopsis ??
                                 '', // Null check here
                             textAlign: TextAlign
                                 .center, // atau TextAlign.justify untuk rata kiri-kanan
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                             ),
@@ -175,10 +174,10 @@ class NovelpageView extends GetView<NovelpageController> {
                               Container(
                                 width: double
                                     .infinity, // Lebar header diubah menjadi maksimum
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 16.0),
                                 color: ColorConstant.Primary,
-                                child: Text(
+                                child: const Text(
                                   'Cari Chapter Anda',
                                   style: TextStyle(
                                     fontSize: 18.0,
@@ -187,42 +186,49 @@ class NovelpageView extends GetView<NovelpageController> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10.0),
+                              const SizedBox(height: 10.0),
                               Expanded(
                                 child: ListView.builder(
-                                  itemCount: controller.chapters.length,
+                                  itemCount: controller
+                                      .novelPageChapter.value.isi?.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return Container(
-                                      margin:
-                                          const EdgeInsets.only(bottom: 10.0),
-                                      height: 50.0,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[200],
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10, right: 10),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              controller.chapters[index],
-                                              style: TextStyle(
-                                                fontSize: 18.0,
-                                                fontWeight: FontWeight.bold,
+                                    final chapter = controller
+                                        .novelPageChapter.value.isi?[index];
+                                    return InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        margin:
+                                            const EdgeInsets.only(bottom: 10.0),
+                                        height: 50.0,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[200],
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                chapter?.chapter ??
+                                                    'Unknown Chapter', // Use ?? to provide a default value
+                                                style: const TextStyle(
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              const Icon(
+                                                Icons.arrow_forward_ios,
                                                 color: Colors.black,
                                               ),
-                                            ),
-                                            Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: Colors.black,
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );
@@ -235,7 +241,7 @@ class NovelpageView extends GetView<NovelpageController> {
                       ),
                     ),
                     const SizedBox(height: 30.0),
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height /
                           2, // Atur tinggi maksimum sesuai kebutuhan
                       width: MediaQuery.of(context).size.width,
@@ -251,7 +257,7 @@ class NovelpageView extends GetView<NovelpageController> {
                                     controller.deleteComment(index);
                                   },
                                   userPhotoUrl: controller.novelPageBuku.value
-                                          .bukus?[0]?.cover ??
+                                          .bukus?[0].cover ??
                                       '', // Null check here
                                 );
                               },
@@ -265,8 +271,8 @@ class NovelpageView extends GetView<NovelpageController> {
                               },
                               decoration: InputDecoration(
                                 hintText: 'Add a comment',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.symmetric(
+                                hintStyle: const TextStyle(color: Colors.grey),
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16.0, vertical: 12.0),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:

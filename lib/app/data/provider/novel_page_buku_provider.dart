@@ -15,7 +15,7 @@ class NovelPageBukuProvider {
       if (response.statusCode == 200) {
         // Jika respons berhasil
         final responseData = jsonDecode(response.body);
-        print(response.body);
+        // print(response.body);
         return Novelpagebuku.fromJson(responseData);
       } else {
         // Jika respons tidak berhasil

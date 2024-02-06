@@ -14,6 +14,7 @@ abstract class Routes {
   static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
   static const SEARCH_PAGE = _Paths.SEARCH_PAGE;
   static const NOVELPAGE = _Paths.NOVELPAGE;
+  static const ISINOVEL = _Paths.ISINOVEL;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
   static const SEARCH_PAGE = '/search-page';
   static const NOVELPAGE = '/novelpage';
+  static const ISINOVEL = '/isinovel';
 }

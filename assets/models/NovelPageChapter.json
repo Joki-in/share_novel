@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "isi": [
+        {
+            "id": 1,
+            "id_buku": 1,
+            "chapter": "Chapter 1",
+            "isi": "Isi dari chapter 1",
+            "created_at": "2024-02-05T13:03:48.000000Z",
+            "updated_at": "2024-02-05T13:03:48.000000Z"
+        },
+        {
+            "id": 2,
+            "id_buku": 1,
+            "chapter": "Chapter 2",
+            "isi": "Isi dari chapter 2",
+            "created_at": "2024-02-05T13:03:48.000000Z",
+            "updated_at": "2024-02-05T13:03:48.000000Z"
+        },
+        {
+            "id": 3,
+            "id_buku": 1,
+            "chapter": "Chapter 3",
+            "isi": "Isi dari chapter 3",
+            "created_at": "2024-02-05T13:03:48.000000Z",
+            "updated_at": "2024-02-05T13:03:48.000000Z"
+        }
+    ]
+}

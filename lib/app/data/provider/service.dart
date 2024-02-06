@@ -24,4 +24,8 @@ class Api {
 
   //novel api
   static const String novelPageBuku = '${api}novelpagebuku';
+  static const String novelPageChapter = '${api}novelpageisi';
+
+  //view and like push
+  static const String pushView = '${api}tambah-view';
 }
