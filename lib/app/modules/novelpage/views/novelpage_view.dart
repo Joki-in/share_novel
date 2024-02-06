@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_novel/app/modules/components/comment.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
+import 'package:shimmer/shimmer.dart';
 import '../controllers/novelpage_controller.dart';
 
 class NovelpageView extends GetView<NovelpageController> {
@@ -19,9 +20,9 @@ class NovelpageView extends GetView<NovelpageController> {
             if (novelPageBuku.bukus != null &&
                 novelPageBuku.bukus!.isNotEmpty) {
               return Text(
-                novelPageBuku.bukus![0].judul!,
+                novelPageBuku.bukus![0].judul ?? 'Unknown', // Null check here
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -29,7 +30,7 @@ class NovelpageView extends GetView<NovelpageController> {
                 maxLines: 1,
               );
             } else {
-              return Text(
+              return const Text(
                 'Loading...',
                 style: TextStyle(
                   fontSize: 16.0,
@@ -52,12 +53,24 @@ class NovelpageView extends GetView<NovelpageController> {
                     Container(
                       height: MediaQuery.of(context).size.height / 3,
                       color: ColorConstant.Abu,
-                      child: Image.network(
-                        'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1698210220',
-                        width: double.infinity,
-                        height: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
+                      child: controller.novelPageBuku.value.bukus != null &&
+                              controller.novelPageBuku.value.bukus!.isNotEmpty
+                          ? Image.network(
+                              controller.novelPageBuku.value.bukus![0]?.cover ??
+                                  '',
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.cover,
+                            )
+                          : Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                color: Colors.white,
+                                width: double.infinity,
+                                height: double.infinity,
+                              ),
+                            ),
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height / 10,
@@ -70,8 +83,8 @@ class NovelpageView extends GetView<NovelpageController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            controller.novelPageBuku.value.bukus![0]
-                                .judul!, // Memunculkan judul buku
+                            controller.novelPageBuku.value.bukus?[0]?.judul ??
+                                'Unknown', // Null check here
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 25.0,
@@ -92,7 +105,8 @@ class NovelpageView extends GetView<NovelpageController> {
                               const SizedBox(width: 5),
                               Text(
                                 controller.novelPageBuku.value.totalLike
-                                    .toString(),
+                                        ?.toString() ??
+                                    '0',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -107,8 +121,9 @@ class NovelpageView extends GetView<NovelpageController> {
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                controller.novelPageBuku.value.bukus![0].view!
-                                    .toString(),
+                                controller.novelPageBuku.value.bukus?[0]?.view
+                                        ?.toString() ??
+                                    '0', // Null check here
                                 style: TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -119,15 +134,15 @@ class NovelpageView extends GetView<NovelpageController> {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            'Penulis: ${controller.novelPageBuku.value.bukus![0].penulis!.name}',
+                            'Penulis: ${controller.novelPageBuku.value.bukus?[0]?.penulis?.name ?? 'Unknown'}', // Null check here
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
                           Text(
-                            "Genre : " +
-                                controller.novelPageBuku.value.bukus![0].genre!,
+                            "Genre : ${controller.novelPageBuku.value.bukus?[0].genre}" ??
+                                'Unknown', // Null check here
                             style: TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
@@ -135,7 +150,8 @@ class NovelpageView extends GetView<NovelpageController> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            controller.novelPageBuku.value.bukus![0].sinopsis!,
+                            controller.novelPageBuku.value.bukus?[0].sinopsis ??
+                                '', // Null check here
                             textAlign: TextAlign
                                 .center, // atau TextAlign.justify untuk rata kiri-kanan
                             style: TextStyle(
@@ -234,8 +250,9 @@ class NovelpageView extends GetView<NovelpageController> {
                                   onDelete: () {
                                     controller.deleteComment(index);
                                   },
-                                  userPhotoUrl:
-                                      'https://awsimages.detik.net.id/community/media/visual/2019/02/19/42393387-9c5c-4be4-97b8-49260708719e.jpeg?w=600&q=90',
+                                  userPhotoUrl: controller.novelPageBuku.value
+                                          .bukus?[0]?.cover ??
+                                      '', // Null check here
                                 );
                               },
                             ),
@@ -277,18 +294,44 @@ class NovelpageView extends GetView<NovelpageController> {
                 );
               },
             ),
-            Positioned(
-              top: MediaQuery.of(context).size.height * .20,
-              left: MediaQuery.of(context).size.width / 4,
-              right: MediaQuery.of(context).size.width / 4,
-              child: Container(
-                height: MediaQuery.of(context).size.height * .35,
-                width: MediaQuery.of(context).size.width - 40.0,
-                child: Image.network(
-                  'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1698210220',
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
+            Obx(
+              () => Positioned(
+                top: MediaQuery.of(context).size.height * .20,
+                left: MediaQuery.of(context).size.width / 4,
+                right: MediaQuery.of(context).size.width / 4,
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: controller.novelPageBuku.value.bukus != null &&
+                          controller.novelPageBuku.value.bukus!.isNotEmpty
+                      ? SizedBox(
+                          height: MediaQuery.of(context).size.height * .35,
+                          width: MediaQuery.of(context).size.width - 40.0,
+                          child: Image.network(
+                            controller.novelPageBuku.value.bukus![0].cover ??
+                                '',
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * .35,
+                            width: MediaQuery.of(context).size.width - 40.0,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
               ),
             ),
