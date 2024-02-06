@@ -73,7 +73,12 @@ class SliderWidget extends StatelessWidget {
                               fontSize: 24,
                               color: Colors.white,
                             ),
-                            onImageTap: (i) {},
+                            onImageTap: (i) {
+                              Get.toNamed(
+                                "/novelpage",
+                                arguments: buku,
+                              );
+                            },
                           );
                         },
                       ),
