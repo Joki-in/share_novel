@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_novel/app/data/models/novelpagebuku_model.dart';
+import 'package:share_novel/app/data/provider/novel_page_buku_provider.dart';
 
 class NovelpageController extends GetxController {
   RxList<String> chapters = <String>[].obs;
   RxList<String> comments = <String>[].obs;
   final TextEditingController commentTextController = TextEditingController();
+  Rx<Novelpagebuku> novelPageBuku = Novelpagebuku().obs;
+  final NovelPageBukuProvider novelPageBukuProvider = NovelPageBukuProvider();
   late String bookId;
 
   @override
@@ -20,6 +24,7 @@ class NovelpageController extends GetxController {
     }
     fetchChapters();
     fetchComments();
+    fetchNovelPageBuku();
     print("Book ID: $bookId");
   }
 
@@ -31,6 +36,22 @@ class NovelpageController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void fetchNovelPageBuku() async {
+    try {
+      final idBuku = int.tryParse(bookId);
+      if (idBuku != null) {
+        final novelpagebuku =
+            await novelPageBukuProvider.getBukuDanPenulis(idBuku);
+        novelPageBuku.value = novelpagebuku;
+      } else {
+        throw Exception("Invalid bookId format");
+      }
+    } catch (e) {
+      // Handle error here
+      print("Error fetching novel page buku: $e");
+    }
   }
 
   void fetchChapters() {

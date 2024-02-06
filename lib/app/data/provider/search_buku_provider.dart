@@ -11,7 +11,6 @@ class SearchProvider {
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        print('bodynya ${response.body}');
         return Search.fromJson(jsonData);
       } else {
         print('bodynya ${response.body}');

@@ -21,4 +21,7 @@ class Api {
 
   //search api
   static const String search = '${api}search2';
+
+  //novel api
+  static const String novelPageBuku = '${api}novelpagebuku';
 }
