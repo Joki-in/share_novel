@@ -97,39 +97,98 @@ class NovelpageView extends GetView<NovelpageController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(
-                                Icons.favorite_border_outlined,
-                                size: 20.0,
-                                color: ColorConstant.Primary,
+                              GestureDetector(
+                                onTap: () async {
+                                  if (controller.statuslike == 'like') {
+                                    try {
+                                      await controller.unLike();
+                                    } catch (e) {
+                                      print('Failed to unlike: $e');
+                                    }
+                                  } else {
+                                    try {
+                                      await controller.createLike();
+                                    } catch (e) {
+                                      print('Failed to like: $e');
+                                    }
+                                  }
+                                },
+                                child: Obx(() {
+                                  if (controller.statuslike == 'like') {
+                                    return Row(
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 20.0,
+                                          color: ColorConstant.Primary,
+                                        ),
+                                        SizedBox(
+                                            width:
+                                                5), // Tambahkan jarak antara ikon dan teks
+                                        Text(
+                                          controller
+                                                  .novelPageBuku.value.totalLike
+                                                  ?.toString() ??
+                                              '0',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.normal,
+                                            color: ColorConstant.Primary,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  } else {
+                                    return Row(
+                                      children: [
+                                        Icon(
+                                          Icons.favorite_border,
+                                          size: 20.0,
+                                          color: ColorConstant.Primary,
+                                        ),
+                                        SizedBox(
+                                            width:
+                                                5), // Tambahkan jarak antara ikon dan teks
+                                        Text(
+                                          controller
+                                                  .novelPageBuku.value.totalLike
+                                                  ?.toString() ??
+                                              '0',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.normal,
+                                            color: ColorConstant.Primary,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }
+                                }),
                               ),
-                              const SizedBox(width: 5),
-                              Text(
-                                controller.novelPageBuku.value.totalLike
-                                        ?.toString() ??
-                                    '0',
-                                style: const TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                  color: ColorConstant.Primary,
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.visibility_outlined,
-                                size: 20.0,
-                                color: ColorConstant.Primary,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                controller.novelPageBuku.value.bukus?[0].view
-                                        ?.toString() ??
-                                    '0', // Null check here
-                                style: const TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                  color: ColorConstant.Primary,
-                                ),
-                              ),
+                              SizedBox(width: 10),
+                              Obx(() {
+                                return Row(
+                                  children: [
+                                    Icon(
+                                      Icons.visibility_outlined,
+                                      size: 20.0,
+                                      color: ColorConstant.Primary,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      controller.novelPageBuku.value.bukus?[0]
+                                              ?.view
+                                              ?.toString() ??
+                                          '0',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.normal,
+                                        color: ColorConstant.Primary,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
                             ],
                           ),
                           const SizedBox(height: 5),
@@ -196,7 +255,14 @@ class NovelpageView extends GetView<NovelpageController> {
                                     final chapter = controller
                                         .novelPageChapter.value.isi?[index];
                                     return InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Get.toNamed(
+                                          '/isinovel',
+                                          arguments: {
+                                            'idChapter': chapter?.id,
+                                          },
+                                        );
+                                      },
                                       child: Container(
                                         margin:
                                             const EdgeInsets.only(bottom: 10.0),
@@ -248,27 +314,26 @@ class NovelpageView extends GetView<NovelpageController> {
                       child: Column(
                         children: [
                           Expanded(
-                            child: ListView.builder(
-                              itemCount: controller.comments.length,
-                              itemBuilder: (context, index) {
-                                return CommentWidget(
-                                  comment: controller.comments[index],
-                                  onDelete: () {
-                                    controller.deleteComment(index);
+                            child: Obx(() => ListView.builder(
+                                  itemCount: controller.komentarList.length,
+                                  itemBuilder: (context, index) {
+                                    final comment =
+                                        controller.komentarList[index];
+                                    final userPhotoUrl = comment.user?.foto ??
+                                        'https://cdn.icon-icons.com/icons2/3708/PNG/512/man_person_people_avatar_icon_230017.png';
+                                    return CommentWidget(
+                                      userPhotoUrl: userPhotoUrl,
+                                      comment:
+                                          comment.komentar ?? 'Unknown comment',
+                                    );
                                   },
-                                  userPhotoUrl: controller.novelPageBuku.value
-                                          .bukus?[0].cover ??
-                                      '', // Null check here
-                                );
-                              },
-                            ),
+                                )),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextFormField(
-                              onFieldSubmitted: (value) {
-                                controller.addComment(value);
-                              },
+                              controller: controller.commentTextController,
+                              onFieldSubmitted: (value) {},
                               decoration: InputDecoration(
                                 hintText: 'Add a comment',
                                 hintStyle: const TextStyle(color: Colors.grey),
@@ -285,9 +350,8 @@ class NovelpageView extends GetView<NovelpageController> {
                                 ),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.send),
-                                  onPressed: () {
-                                    controller.addComment(
-                                        controller.commentTextController.text);
+                                  onPressed: () async {
+                                    await controller.postKomentar();
                                   },
                                 ),
                               ),

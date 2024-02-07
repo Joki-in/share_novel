@@ -8,6 +8,7 @@ class IsinovelView extends GetView<IsinovelController> {
   const IsinovelView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final IsinovelController controller = Get.put(IsinovelController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('IsinovelView'),

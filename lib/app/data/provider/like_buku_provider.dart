@@ -7,7 +7,7 @@ class BukuProvider extends GetConnect {
     var response = await get(Api.topLike);
 
     if (response.status.hasError) {
-      print('Error: ${response.statusText}');
+      // print('Error: ${response.statusText}');
       return Future.error(response.statusText!);
     } else {
       // print('Response: ${response.bodyString}');

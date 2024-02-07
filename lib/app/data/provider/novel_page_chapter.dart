@@ -9,11 +9,11 @@ class NovelpagechapterProvider extends GetConnect {
           await post(Api.novelPageChapter, {'id_buku': idBuku.toString()});
 
       if (response.status.hasError) {
-        // print('Error: ${response.statusText}');
+        print('Error: ${response.statusText}');
         throw 'Error fetching data';
       } else {
         final Map<String, dynamic> responseData = response.body;
-        print('Response Body: $responseData');
+        // print('Response Body: $responseData');
         return Novelpagechapter.fromJson(responseData);
       }
     } catch (e) {

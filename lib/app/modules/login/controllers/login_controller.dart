@@ -50,9 +50,11 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final token = responseData['token'];
+        final userId = responseData['user_id'];
+
         print(token);
         // Simpan token ke SharedPreferences
-        await saveTokenToSharedPreferences(token);
+        await saveTokenToSharedPreferences(token, userId);
 
         Get.snackbar('Success', 'Login successful');
         Get.offAllNamed('/bottom-nav-bar');
@@ -69,8 +71,9 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> saveTokenToSharedPreferences(String token) async {
+  Future<void> saveTokenToSharedPreferences(String token, int userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
+    await prefs.setString('user_id', userId.toString());
   }
 }

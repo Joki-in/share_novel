@@ -25,7 +25,14 @@ class Api {
   //novel api
   static const String novelPageBuku = '${api}novelpagebuku';
   static const String novelPageChapter = '${api}novelpageisi';
+  static const String novelPageKomentar = '${api}novelpagekomentar';
 
   //view and like push
   static const String pushView = '${api}tambah-view';
+  static const String checklike = '${api}check-like';
+  static const String pushLike = '${api}tambah-like';
+  static const String pushUnlike = '${api}hapus-like';
+
+  //komentar api
+  static const String postKomentar = '${api}komentarpost';
 }

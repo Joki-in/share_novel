@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 
 class CommentWidget extends StatelessWidget {
   final String comment;
-  final Function onDelete;
+
   final String userPhotoUrl;
 
   const CommentWidget(
-      {Key? key,
-      required this.comment,
-      required this.onDelete,
-      required this.userPhotoUrl})
+      {Key? key, required this.comment, required this.userPhotoUrl})
       : super(key: key);
 
   @override
