@@ -201,7 +201,6 @@ class NovelpageController extends GetxController {
     }
 
     final idBuku = int.tryParse(bookId)?.toString(); // Convert to String
-    var komentar = commentTextController.text;
     try {
       final response = await http.post(
         Uri.parse(Api.postKomentar),

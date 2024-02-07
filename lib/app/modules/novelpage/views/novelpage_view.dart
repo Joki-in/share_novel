@@ -99,6 +99,7 @@ class NovelpageView extends GetView<NovelpageController> {
                             children: [
                               GestureDetector(
                                 onTap: () async {
+                                  // ignore: unrelated_type_equality_checks
                                   if (controller.statuslike == 'like') {
                                     try {
                                       await controller.unLike();
@@ -114,15 +115,16 @@ class NovelpageView extends GetView<NovelpageController> {
                                   }
                                 },
                                 child: Obx(() {
+                                  // ignore: unrelated_type_equality_checks
                                   if (controller.statuslike == 'like') {
                                     return Row(
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.favorite,
                                           size: 20.0,
                                           color: ColorConstant.Primary,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                             width:
                                                 5), // Tambahkan jarak antara ikon dan teks
                                         Text(
@@ -130,7 +132,7 @@ class NovelpageView extends GetView<NovelpageController> {
                                                   .novelPageBuku.value.totalLike
                                                   ?.toString() ??
                                               '0',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                             color: ColorConstant.Primary,
@@ -141,12 +143,12 @@ class NovelpageView extends GetView<NovelpageController> {
                                   } else {
                                     return Row(
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.favorite_border,
                                           size: 20.0,
                                           color: ColorConstant.Primary,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                             width:
                                                 5), // Tambahkan jarak antara ikon dan teks
                                         Text(
@@ -154,7 +156,7 @@ class NovelpageView extends GetView<NovelpageController> {
                                                   .novelPageBuku.value.totalLike
                                                   ?.toString() ??
                                               '0',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                             color: ColorConstant.Primary,
@@ -165,22 +167,22 @@ class NovelpageView extends GetView<NovelpageController> {
                                   }
                                 }),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Obx(() {
                                 return Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.visibility_outlined,
                                       size: 20.0,
                                       color: ColorConstant.Primary,
                                     ),
-                                    SizedBox(width: 5),
+                                    const SizedBox(width: 5),
                                     Text(
                                       controller.novelPageBuku.value.bukus?[0]
-                                              ?.view
+                                              .view
                                               ?.toString() ??
                                           '0',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                         color: ColorConstant.Primary,
@@ -284,7 +286,7 @@ class NovelpageView extends GetView<NovelpageController> {
                                                 child: RichText(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  strutStyle: StrutStyle(
+                                                  strutStyle: const StrutStyle(
                                                       fontSize: 12.0),
                                                   text: TextSpan(
                                                       style: const TextStyle(
@@ -353,11 +355,12 @@ class NovelpageView extends GetView<NovelpageController> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
+                                  borderSide:
+                                      const BorderSide(color: Colors.blue),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 suffixIcon: IconButton(
-                                  icon: Icon(Icons.send),
+                                  icon: const Icon(Icons.send),
                                   onPressed: () async {
                                     await controller.postKomentar();
                                   },
@@ -384,7 +387,8 @@ class NovelpageView extends GetView<NovelpageController> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
