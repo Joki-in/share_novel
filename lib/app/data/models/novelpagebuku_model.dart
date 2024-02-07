@@ -34,6 +34,7 @@ class Bukus {
   int? view;
   String? genre;
   String? cover;
+  int? i18;
   int? penulisId;
   String? createdAt;
   String? updatedAt;
@@ -47,6 +48,7 @@ class Bukus {
       this.view,
       this.genre,
       this.cover,
+      this.i18,
       this.penulisId,
       this.createdAt,
       this.updatedAt,
@@ -60,6 +62,7 @@ class Bukus {
     view = json['view'];
     genre = json['genre'];
     cover = json['cover'];
+    i18 = json['18+'];
     penulisId = json['penulis_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -76,6 +79,7 @@ class Bukus {
     data['view'] = view;
     data['genre'] = genre;
     data['cover'] = cover;
+    data['18+'] = i18;
     data['penulis_id'] = penulisId;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
