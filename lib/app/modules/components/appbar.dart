@@ -36,10 +36,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: ColorConstant.DarkPrimary,
-                fontSize: 20.0,
+                fontSize: 18.0,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.bold,
               ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ],
         ),

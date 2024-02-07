@@ -35,4 +35,7 @@ class Api {
 
   //komentar api
   static const String postKomentar = '${api}komentarpost';
+
+  //isi api
+  static const String isi = '${api}getisibuku';
 }

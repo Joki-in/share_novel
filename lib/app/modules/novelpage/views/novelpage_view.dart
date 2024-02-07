@@ -280,13 +280,21 @@ class NovelpageView extends GetView<NovelpageController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text(
-                                                chapter?.chapter ??
-                                                    'Unknown Chapter', // Use ?? to provide a default value
-                                                style: const TextStyle(
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,
+                                              Flexible(
+                                                child: RichText(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  strutStyle: StrutStyle(
+                                                      fontSize: 12.0),
+                                                  text: TextSpan(
+                                                      style: const TextStyle(
+                                                        fontSize: 18.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.black,
+                                                      ),
+                                                      text: chapter?.chapter ??
+                                                          'Unknown Chapter'),
                                                 ),
                                               ),
                                               const Icon(
