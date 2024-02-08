@@ -1,0 +1,55 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "judul": "Vel dicta quia veritatis cupiditate.",
+            "sinopsis": "Quia repellendus iste qui accusamus vel quia. Consequuntur sit assumenda repudiandae velit voluptatum recusandae qui. A quia et aut soluta esse quia enim.",
+            "view": 43,
+            "genre": "drama",
+            "cover": "1707365655_2.jpg",
+            "penulis_id": 1,
+            "like_count": 1
+        },
+        {
+            "id": 3,
+            "judul": "Illo praesentium minus illo et quidem quo.",
+            "sinopsis": "Ratione recusandae corrupti quos dolores. Omnis suscipit illo sequi sapiente non delectus. Corrupti deserunt nam eveniet voluptate repudiandae itaque rerum.",
+            "view": 24,
+            "genre": "fiksi",
+            "cover": "1707365655_2.jpg",
+            "penulis_id": 1,
+            "like_count": 0
+        },
+        {
+            "id": 4,
+            "judul": "Expedita consequatur earum tempora ducimus exercitationem inventore.",
+            "sinopsis": "Ipsum vel optio quibusdam ad. Repudiandae magni nesciunt qui impedit quaerat rem et reprehenderit. Placeat repellendus modi maxime.",
+            "view": 65,
+            "genre": "horor",
+            "cover": "1707365655_2.jpg",
+            "penulis_id": 1,
+            "like_count": 0
+        },
+        {
+            "id": 5,
+            "judul": "Ut dolor voluptatem nesciunt id ut.",
+            "sinopsis": "Exercitationem sit fuga enim qui et aut alias voluptatibus. Et vero alias totam quia. Quos qui sunt sint ab ad optio et.",
+            "view": 65,
+            "genre": "horor",
+            "cover": "1707365655_2.jpg",
+            "penulis_id": 1,
+            "like_count": 0
+        },
+        {
+            "id": 6,
+            "judul": "luka dalam",
+            "sinopsis": "pokoknya mantep gan",
+            "view": 3,
+            "genre": "fiksi",
+            "cover": "1707365655_2.jpg",
+            "penulis_id": 1,
+            "like_count": 0
+        }
+    ]
+}

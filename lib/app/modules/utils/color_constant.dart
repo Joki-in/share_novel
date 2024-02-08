@@ -10,4 +10,5 @@ class ColorConstant {
   static const Color Danger = Colors.red;
   static const Color Success = Color.fromARGB(255, 134, 215, 137);
   static const Color Abu = Color(0xFFE0E0E0);
+  static const Color Alert = Color(0xFFff9966);
 }

@@ -22,6 +22,9 @@ class Api {
   //search api
   static const String search = '${api}search2';
 
+  //cover image Api
+  static const String coverImage = '${baseUrl}coverbuku/';
+
   //novel api
   static const String novelPageBuku = '${api}novelpagebuku';
   static const String novelPageChapter = '${api}novelpageisi';
@@ -38,4 +41,10 @@ class Api {
 
   //isi api
   static const String isi = '${api}getisibuku';
+
+  //tambah novel api
+  static const String tambahNovelShow = '${api}createbukushow';
+
+  //delete novel api
+  static const String deleteNovel = '${api}deletebuku';
 }
