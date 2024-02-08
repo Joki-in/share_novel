@@ -47,4 +47,7 @@ class Api {
 
   //delete novel api
   static const String deleteNovel = '${api}deletebuku';
+
+  //delete isi api
+  static const String deleteIsi = '${api}delete-isi';
 }

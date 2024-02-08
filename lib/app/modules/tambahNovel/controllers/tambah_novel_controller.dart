@@ -62,7 +62,7 @@ class TambahNovelController extends GetxController {
         },
         body: jsonData,
       );
-      print(response.body);
+
       if (response.statusCode == 200) {
         Get.snackbar('Success', 'Data has been deleted successfully');
       } else {

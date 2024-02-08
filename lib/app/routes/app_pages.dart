@@ -6,6 +6,8 @@ import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/forgotPassword/views/forgot_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/isicreateshow/bindings/isicreateshow_binding.dart';
+import '../modules/isicreateshow/views/isicreateshow_view.dart';
 import '../modules/isinovel/bindings/isinovel_binding.dart';
 import '../modules/isinovel/views/isinovel_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.ISINOVEL,
       page: () => const IsinovelView(),
       binding: IsinovelBinding(),
+    ),
+    GetPage(
+      name: _Paths.ISICREATESHOW,
+      page: () => const IsicreateshowView(),
+      binding: IsicreateshowBinding(),
     ),
   ];
 }
