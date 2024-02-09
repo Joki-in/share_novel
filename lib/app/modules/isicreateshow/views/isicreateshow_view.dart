@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:share_novel/app/modules/components/appbar.dart';
 import 'package:share_novel/app/modules/components/shimmer_chaptershow.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
 

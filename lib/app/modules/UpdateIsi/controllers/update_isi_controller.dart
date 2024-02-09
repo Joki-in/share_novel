@@ -120,11 +120,9 @@ class UpdateIsiController extends GetxController {
         }),
         headers: {'Content-Type': 'application/json'},
       );
-
-      print(response.body);
       if (response.statusCode == 201) {
         final responseData = jsonDecode(response.body);
-        final isi = Isi.fromJson(responseData['data']);
+        print(responseData);
         Get.snackbar('Success', 'Data isi berhasil dibuat',
             backgroundColor: ColorConstant.Success,
             colorText: ColorConstant.WhiteColor);

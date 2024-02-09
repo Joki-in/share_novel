@@ -1,10 +1,8 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:share_novel/app/data/models/novelpagechapter_model.dart';
 import 'package:share_novel/app/data/provider/novel_page_chapter.dart';
 import 'package:http/http.dart' as http;
 import 'package:share_novel/app/data/provider/service.dart';
-import 'package:share_novel/app/modules/utils/color_constant.dart';
 
 class IsicreateshowController extends GetxController {
   RxList<String> chapters = <String>[].obs;
