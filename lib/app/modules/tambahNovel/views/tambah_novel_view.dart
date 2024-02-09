@@ -107,7 +107,7 @@ class TambahNovelView extends GetView<TambahNovelController> {
                                     iconSize: 24.0,
                                     color: ColorConstant.Alert,
                                     onPressed: () {
-                                      Get.toNamed('/isicreateshow',
+                                      Get.offAllNamed('/isicreateshow',
                                           arguments:
                                               novel.dATA![index].id ?? 0);
                                     },

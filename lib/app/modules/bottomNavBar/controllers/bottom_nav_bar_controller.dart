@@ -9,10 +9,10 @@ class BottomNavBarController extends GetxController {
   var selectedIndex = 0.obs;
   final count = 0.obs;
   List<Widget> pages = [
-    HomeView(),
-    SearchPageView(),
-    TambahNovelView(),
-    ProfileView(),
+    const HomeView(),
+    const SearchPageView(),
+    const TambahNovelView(),
+    const ProfileView(),
   ];
   @override
   void onInit() {

@@ -48,6 +48,8 @@ class Api {
   //delete novel api
   static const String deleteNovel = '${api}deletebuku';
 
-  //delete isi api
+  //crud isi api
   static const String deleteIsi = '${api}delete-isi';
+  static const String updateIsi = '${api}update-isi';
+  static const String createIsi = '${api}create-isi';
 }

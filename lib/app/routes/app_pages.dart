@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/UpdateIsi/bindings/update_isi_binding.dart';
+import '../modules/UpdateIsi/views/update_isi_view.dart';
 import '../modules/bottomNavBar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottomNavBar/views/bottom_nav_bar_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.ISICREATESHOW,
       page: () => const IsicreateshowView(),
       binding: IsicreateshowBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_ISI,
+      page: () => UpdateIsiView(),
+      binding: UpdateIsiBinding(),
     ),
   ];
 }

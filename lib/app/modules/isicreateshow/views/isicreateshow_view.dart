@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:share_novel/app/modules/components/appbar.dart';
 import 'package:share_novel/app/modules/components/shimmer_chaptershow.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
@@ -15,10 +16,49 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
         Get.put(IsicreateshowController());
 
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Share Novels',
+      appBar: AppBar(
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Get.offAllNamed('/bottom-nav-bar');
+              },
+            ),
+            const SizedBox(width: 10),
+            Lottie.asset(
+              'assets/booklogin.json',
+              height: 40,
+              width: 40,
+            ),
+            const SizedBox(width: 10),
+            Text(
+              "Share Novel",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: ColorConstant.DarkPrimary,
+                fontSize: 18.0,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ],
+        ),
+        centerTitle: true,
         backgroundColor: ColorConstant.Primary,
-        lottieAssetPath: 'assets/booklogin.json',
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Get.toNamed(
+            '/update-isi',
+            arguments: {
+              'id_buku': controller.bookId,
+            },
+          );
+        },
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -95,7 +135,17 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                                         icon: const Icon(Icons.edit),
                                         color: ColorConstant.Alert,
                                         iconSize: 24.0,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Get.toNamed('/update-isi',
+                                              arguments: {
+                                                'id': chapter?.id ?? '',
+                                                'chapter':
+                                                    chapter?.chapter ?? '',
+                                                'isi': chapter?.isi ?? '',
+                                                'id_buku': chapter?.idBuku ??
+                                                    0, // Atau berikan nilai default yang sesuai
+                                              });
+                                        },
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.delete),
