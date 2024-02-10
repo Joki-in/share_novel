@@ -59,7 +59,7 @@ class NovelpageView extends GetView<NovelpageController> {
                       child: controller.novelPageBuku.value.bukus != null &&
                               controller.novelPageBuku.value.bukus!.isNotEmpty
                           ? Image.network(
-                              '${Api.coverImage}${controller.novelPageBuku.value.bukus![0].cover ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqH2CGdncVPHW_tG44tWolr1ogeuy7X1szQ&usqp=CAU'}',
+                              '${Api.coverImage}${controller.novelPageBuku.value.bukus![0].cover ?? 'notfound.jpg'}',
                               width: double.infinity,
                               height: double.infinity,
                               fit: BoxFit.cover,
@@ -418,7 +418,7 @@ class NovelpageView extends GetView<NovelpageController> {
                           height: MediaQuery.of(context).size.height * .35,
                           width: MediaQuery.of(context).size.width - 40.0,
                           child: Image.network(
-                            '${Api.coverImage}${controller.novelPageBuku.value.bukus![0].cover ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqH2CGdncVPHW_tG44tWolr1ogeuy7X1szQ&usqp=CAU'}',
+                            '${Api.coverImage}${controller.novelPageBuku.value.bukus![0].cover ?? 'notfound.jpg'}',
                             width: double.infinity,
                             height: double.infinity,
                             fit: BoxFit.cover,

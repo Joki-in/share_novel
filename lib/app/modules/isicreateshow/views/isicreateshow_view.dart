@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:share_novel/app/data/provider/service.dart';
 import 'package:share_novel/app/modules/components/shimmer_chaptershow.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../controllers/isicreateshow_controller.dart';
 
@@ -11,15 +13,12 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
 
   @override
   Widget build(BuildContext context) {
-    final IsicreateshowController controller =
-        Get.put(IsicreateshowController());
-
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
             IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Get.offAllNamed('/bottom-nav-bar');
               },
@@ -31,7 +30,7 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
               width: 40,
             ),
             const SizedBox(width: 10),
-            Text(
+            const Text(
               "Share Novel",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -48,8 +47,7 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
         centerTitle: true,
         backgroundColor: ColorConstant.Primary,
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Get.toNamed(
             '/update-isi',
@@ -58,16 +56,231 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
             },
           );
         },
+        label: Text(
+            'Tambah Chapter'), // Teks yang ingin ditambahkan di sebelah ikon
+        icon: Icon(Icons.add), // Ikon yang ingin ditampilkan
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 2,
-              width: double.infinity,
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              child: Padding(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
                 padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Obx(() {
+                      final bukus = controller.novelPageBuku.value.bukus;
+                      return Stack(
+                        children: [
+                          bukus != null && bukus.isNotEmpty
+                              ? SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 4,
+                                  width: MediaQuery.of(context).size.width / 3,
+                                  child: Image.network(
+                                    '${Api.coverImage}${bukus[0].cover ?? 'notfound.jpg'}',
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : Shimmer.fromColors(
+                                  baseColor: Colors.grey[300]!,
+                                  highlightColor: Colors.grey[100]!,
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height / 4,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: InkWell(
+                              onTap: () {
+                                controller.pickImage();
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(12)),
+                                ),
+                                child:
+                                    Icon(Icons.camera_alt, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Judul",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 5),
+              Obx(() {
+                return TextField(
+                  controller: controller.judulTextfieldController,
+                  onChanged: (value) => controller.judul.value = value,
+                  focusNode: FocusNode(),
+                  decoration: const InputDecoration(
+                    hintText: 'Judul',
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 16.0,
+                    ),
+                  ),
+                );
+              }),
+              const SizedBox(height: 10),
+              const Text(
+                "Sinopsis",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 5),
+              Obx(() {
+                return TextField(
+                  controller: controller.sinopsisTextfieldController,
+                  onChanged: (value) => controller.sinopsis.value = value,
+                  focusNode: FocusNode(),
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 2,
+                  decoration: const InputDecoration(
+                    hintText: 'Sinopsis',
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(
+                        vertical: 20.0,
+                        horizontal: 16.0), // Sesuaikan padding di sini
+                  ),
+                );
+              }),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Text(
+                    "18 ++",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Obx(() {
+                    return Switch(
+                      value: controller.i18.value == 1,
+                      onChanged: (value) {
+                        // Jika Switch diaktifkan, set nilai i18 menjadi 1, jika tidak, set menjadi 0
+                        controller.i18.value = value ? 1 : 0;
+                        print(controller.i18.value);
+                      },
+                      activeColor: ColorConstant
+                          .Danger, // Ubah warna ketika Switch aktif
+                    );
+                  }),
+                ],
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                width: MediaQuery.of(context).size.width -
+                    20, // Sesuaikan lebar sesuai kebutuhan
+                child: Obx(
+                  () => DropdownButtonFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Select an item',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 14.0),
+                    ),
+                    value: controller.selectedValue.value.isNotEmpty
+                        ? controller.selectedValue.value
+                        : null,
+                    onChanged: (value) {
+                      controller.setSelectedValue(value.toString());
+                    },
+                    icon: const Icon(Icons.arrow_drop_down,
+                        color: ColorConstant.DarkPrimary),
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      color: ColorConstant.DarkPrimary,
+                    ),
+                    dropdownColor: Colors.white,
+                    elevation: 3,
+                    isExpanded: true,
+                    items: const [
+                      DropdownMenuItem(
+                        value: '',
+                        child: Text('Pilih Genre'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'fiksi',
+                        child: Text('Fiksi'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'drama',
+                        child: Text('Drama'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'horor',
+                        child: Text('Horor'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    controller.updateBuku();
+                  },
+                  child: Text(
+                    "Submit Perubahan",
+                    style: TextStyle(color: ColorConstant.WhiteColor),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorConstant.Primary),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: MediaQuery.of(context).size.height / 2,
+                width: double.infinity,
+                color: const Color.fromRGBO(255, 255, 255, 1),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -141,8 +354,7 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                                                 'chapter':
                                                     chapter?.chapter ?? '',
                                                 'isi': chapter?.isi ?? '',
-                                                'id_buku': chapter?.idBuku ??
-                                                    0, // Atau berikan nilai default yang sesuai
+                                                'id_buku': chapter?.idBuku ?? 0,
                                               });
                                         },
                                       ),
@@ -167,8 +379,8 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

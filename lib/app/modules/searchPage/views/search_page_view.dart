@@ -153,7 +153,7 @@ class SearchPageView extends GetView<SearchPageController> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Image.network(
-                                  '${Api.coverImage}${result.cover ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqH2CGdncVPHW_tG44tWolr1ogeuy7X1szQ&usqp=CAU'}',
+                                  '${Api.coverImage}${result.cover ?? 'notfound.jpg'}',
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   height:

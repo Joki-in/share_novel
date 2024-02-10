@@ -42,14 +42,15 @@ class Api {
   //isi api
   static const String isi = '${api}getisibuku';
 
-  //tambah novel api
+  //tambah buku api
   static const String tambahNovelShow = '${api}createbukushow';
-
-  //delete novel api
+  static const String createNovel = '${api}createbuku';
+  static const String updateNovel = '${api}updateBuku';
   static const String deleteNovel = '${api}deletebuku';
 
   //crud isi api
   static const String deleteIsi = '${api}delete-isi';
   static const String updateIsi = '${api}update-isi';
   static const String createIsi = '${api}create-isi';
+  static const String updateCover = '${api}updatecover';
 }

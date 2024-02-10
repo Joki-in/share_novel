@@ -96,7 +96,7 @@ class HomeView extends GetView<HomeController> {
                               child: Stack(
                                 children: [
                                   Image.network(
-                                    '${Api.coverImage}${buku.cover ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqH2CGdncVPHW_tG44tWolr1ogeuy7X1szQ&usqp=CAU'}',
+                                    '${Api.coverImage}${buku.cover ?? 'notfound.jpg'}',
                                     width: double.infinity,
                                     height: double.infinity,
                                     fit: BoxFit.cover,

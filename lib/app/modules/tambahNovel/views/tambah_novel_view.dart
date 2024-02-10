@@ -83,7 +83,7 @@ class TambahNovelView extends GetView<TambahNovelController> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                      '${Api.coverImage}${novel.dATA![index].cover ?? 'https://via.placeholder.com/150'}',
+                                      '${Api.coverImage}${novel.dATA![index].cover ?? 'notfound.jpg'}',
                                     ),
                                     fit: BoxFit.cover,
                                   ),
@@ -133,7 +133,13 @@ class TambahNovelView extends GetView<TambahNovelController> {
                 } else {
                   return const SliverToBoxAdapter(
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Anda Belum Menambahkan Buku"),
+                        ],
+                      ),
                     ),
                   );
                 }
@@ -146,7 +152,175 @@ class TambahNovelView extends GetView<TambahNovelController> {
         return Visibility(
           visible: isFabVisible.value,
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text(
+                                'Tambah Buku',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller: controller.judulTextfieldController,
+                              focusNode: FocusNode(),
+                              decoration: const InputDecoration(
+                                hintText: 'Judul',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 20.0,
+                                  horizontal: 16.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller:
+                                  controller.sinopsisTextfieldController,
+                              focusNode: FocusNode(),
+                              keyboardType: TextInputType.multiline,
+                              maxLines: 2,
+                              decoration: const InputDecoration(
+                                hintText: 'Sinopsis',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 20.0,
+                                  horizontal: 16.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                const Text(
+                                  "18 ++",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Obx(
+                                  () {
+                                    return Switch(
+                                      value: controller.i18.value == 1,
+                                      onChanged: (value) {
+                                        controller.i18.value = value ? 1 : 0;
+                                        print(controller.i18.value);
+                                      },
+                                      activeColor: Colors.red,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width - 20,
+                              child: Obx(() {
+                                return DropdownButtonFormField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Select an item',
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: const BorderSide(),
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: 14.0,
+                                    ),
+                                  ),
+                                  value:
+                                      controller.selectedValue.value.isNotEmpty
+                                          ? controller.selectedValue.value
+                                          : null,
+                                  onChanged: (value) {
+                                    controller
+                                        .setSelectedValue(value.toString());
+                                  },
+                                  icon: const Icon(Icons.arrow_drop_down),
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.blue,
+                                  ),
+                                  dropdownColor: Colors.white,
+                                  elevation: 3,
+                                  isExpanded: true,
+                                  items: const [
+                                    DropdownMenuItem(
+                                      value: '',
+                                      child: Text('Pilih Genre'),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: 'fiksi',
+                                      child: Text('Fiksi'),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: 'drama',
+                                      child: Text('Drama'),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: 'horor',
+                                      child: Text('Horor'),
+                                    ),
+                                  ],
+                                );
+                              }),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  controller.storeBuku();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                ),
+                                child: const Text(
+                                  "Submit Perubahan",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
             child: const Icon(Icons.add),
             backgroundColor: ColorConstant.Primary,
           ),

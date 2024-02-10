@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_novel/app/data/models/search_model.dart';
 import 'package:share_novel/app/data/provider/service.dart';
@@ -12,6 +13,10 @@ class TambahNovelController extends GetxController {
 
   final Rx<Search?> tambahNovelData = Rx<Search?>(null);
   Search? get tambahNovelValue => tambahNovelData.value;
+  var judulTextfieldController = TextEditingController();
+  var sinopsisTextfieldController = TextEditingController();
+  RxInt i18 = 0.obs;
+  RxString selectedValue = RxString('');
   final count = 0.obs;
 
   @override
@@ -77,5 +82,43 @@ class TambahNovelController extends GetxController {
 
   Future<void> loadData() async {
     await fetchTambahNovelData();
+  }
+
+  void setSelectedValue(String value) {
+    selectedValue.value = value;
+    print(selectedValue.value);
+  }
+
+  void storeBuku() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String? penulisId = prefs.getString('user_id');
+      final judul = judulTextfieldController.text;
+      final sinopsis = sinopsisTextfieldController.text;
+      final genre = selectedValue.value;
+
+      final response = await http.post(
+        Uri.parse(Api.createNovel),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'judul': judul,
+          'sinopsis': sinopsis,
+          'penulis_id': penulisId,
+          '18+': i18.value,
+          'genre': genre,
+        }),
+      );
+      print(response.body);
+      if (response.statusCode == 201) {
+        Get.snackbar('Success', 'Data buku berhasil disimpan');
+      } else {
+        Get.snackbar('Error', 'Failed to store data: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Error storing data: $e');
+    }
+    fetchTambahNovelData();
   }
 }
