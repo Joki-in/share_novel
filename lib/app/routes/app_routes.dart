@@ -17,6 +17,7 @@ abstract class Routes {
   static const ISINOVEL = _Paths.ISINOVEL;
   static const ISICREATESHOW = _Paths.ISICREATESHOW;
   static const UPDATE_ISI = _Paths.UPDATE_ISI;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const ISINOVEL = '/isinovel';
   static const ISICREATESHOW = '/isicreateshow';
   static const UPDATE_ISI = '/update-isi';
+  static const SPLASH = '/splash';
 }

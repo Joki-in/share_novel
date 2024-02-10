@@ -21,6 +21,7 @@ dependencies:
   shimmer: ^3.0.0
   carbon_icons: ^0.0.1+2
   flutter_tts: ^3.8.5
+  animated_text_kit: ^4.2.2
   
 
 dev_dependencies: 

@@ -26,6 +26,8 @@ import '../modules/resetPassword/bindings/reset_password_binding.dart';
 import '../modules/resetPassword/views/reset_password_view.dart';
 import '../modules/searchPage/bindings/search_page_binding.dart';
 import '../modules/searchPage/views/search_page_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 import '../modules/tambahNovel/bindings/tambah_novel_binding.dart';
 import '../modules/tambahNovel/views/tambah_novel_view.dart';
 
@@ -34,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.UPDATE_ISI,
       page: () => UpdateIsiView(),
       binding: UpdateIsiBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }
