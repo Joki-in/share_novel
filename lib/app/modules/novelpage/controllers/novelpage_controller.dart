@@ -27,6 +27,8 @@ class NovelpageController extends GetxController {
   final NovelPageBukuProvider novelPageBukuProvider = NovelPageBukuProvider();
   final NovelpagechapterProvider _novelpagechapterProvider =
       NovelpagechapterProvider();
+  bool isPosting = false;
+  int statuscode = 0;
 
   @override
   void onInit() {
@@ -200,7 +202,8 @@ class NovelpageController extends GetxController {
       return;
     }
 
-    final idBuku = int.tryParse(bookId)?.toString(); // Convert to String
+    final idBuku = int.tryParse(bookId)?.toString();
+
     try {
       final response = await http.post(
         Uri.parse(Api.postKomentar),
@@ -218,6 +221,8 @@ class NovelpageController extends GetxController {
         // Komentar gagal dibuat
         print('Failed to create komentar');
       }
+
+      statuscode = response.statusCode;
     } catch (e) {
       // Tangani kesalahan
       print('Error: $e');

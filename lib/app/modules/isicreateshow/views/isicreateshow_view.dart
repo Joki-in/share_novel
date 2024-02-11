@@ -379,6 +379,9 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 6,
+              )
             ],
           ),
         ),

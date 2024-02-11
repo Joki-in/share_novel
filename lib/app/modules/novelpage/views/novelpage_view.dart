@@ -382,7 +382,25 @@ class NovelpageView extends GetView<NovelpageController> {
                                 suffixIcon: IconButton(
                                   icon: const Icon(Icons.send),
                                   onPressed: () async {
-                                    await controller.postKomentar();
+                                    if (!controller.isPosting) {
+                                      try {
+                                        controller.isPosting = true;
+
+                                        await controller.postKomentar();
+                                        if (controller.statuscode == 201) {
+                                          controller.commentTextController
+                                              .clear();
+                                          print('Komentar berhasil dibuat');
+                                        } else {
+                                          print(
+                                              'Gagal membuat komentar: ${controller.statuscode}');
+                                        }
+                                      } catch (e) {
+                                        print('Terjadi kesalahan: $e');
+                                      } finally {
+                                        controller.isPosting = false;
+                                      }
+                                    }
                                   },
                                 ),
                               ),
