@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "17775040778",
+    "project_id": "sharenovel-flutter-3d556",
+    "storage_bucket": "sharenovel-flutter-3d556.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17775040778:android:b8d5143d89311d0be402f3",
+        "android_client_info": {
+          "package_name": "com.share_novel.share_novel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC6etrrvCiHQpk3YJG4RSLgy86PrFW7Yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

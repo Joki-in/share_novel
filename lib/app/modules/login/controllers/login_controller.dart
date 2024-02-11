@@ -39,12 +39,15 @@ class LoginController extends GetxController {
     final url = Uri.parse(Api.login);
 
     try {
+      final prefs = await SharedPreferences.getInstance();
+      String? tokenFCM = prefs.getString('fcmToken');
       final email = emailController.text;
       final password = passwordController.text;
 
       final response = await http.post(url,
           headers: {'Content-Type': 'application/json'},
-          body: json.encode({'email': email, 'password': password}));
+          body: json.encode(
+              {'email': email, 'password': password, 'fcm_token': tokenFCM}));
 
       final responseData = json.decode(response.body);
 
