@@ -15,6 +15,7 @@ class TambahNovelController extends GetxController {
   Search? get tambahNovelValue => tambahNovelData.value;
   var judulTextfieldController = TextEditingController();
   var sinopsisTextfieldController = TextEditingController();
+  final int maxLengthjudul = 75;
   RxInt i18 = 0.obs;
   RxString selectedValue = RxString('');
   final count = 0.obs;

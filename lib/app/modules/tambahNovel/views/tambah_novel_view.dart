@@ -179,17 +179,28 @@ class TambahNovelView extends GetView<TambahNovelController> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              controller: controller.judulTextfieldController,
-                              focusNode: FocusNode(),
-                              decoration: const InputDecoration(
-                                hintText: 'Judul',
-                                border: OutlineInputBorder(),
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 20.0,
-                                  horizontal: 16.0,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: TextField(
+                                      controller:
+                                          controller.judulTextfieldController,
+                                      focusNode: FocusNode(),
+                                      maxLength: controller.maxLengthjudul,
+                                      decoration: const InputDecoration(
+                                        hintText: 'Judul',
+                                        border: OutlineInputBorder(),
+                                        contentPadding: EdgeInsets.symmetric(
+                                          vertical: 20.0,
+                                          horizontal: 16.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -200,6 +211,7 @@ class TambahNovelView extends GetView<TambahNovelController> {
                               focusNode: FocusNode(),
                               keyboardType: TextInputType.multiline,
                               maxLines: 2,
+                              maxLength: 3000,
                               decoration: const InputDecoration(
                                 hintText: 'Sinopsis',
                                 border: OutlineInputBorder(),

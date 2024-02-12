@@ -147,6 +147,7 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                   controller: controller.judulTextfieldController,
                   onChanged: (value) => controller.judul.value = value,
                   focusNode: FocusNode(),
+                  maxLength: 75,
                   decoration: const InputDecoration(
                     hintText: 'Judul',
                     border: OutlineInputBorder(),
@@ -173,6 +174,7 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                   focusNode: FocusNode(),
                   keyboardType: TextInputType.multiline,
                   maxLines: 2,
+                  maxLength: 3000,
                   decoration: const InputDecoration(
                     hintText: 'Sinopsis',
                     border: OutlineInputBorder(),
