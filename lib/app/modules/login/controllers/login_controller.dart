@@ -52,15 +52,25 @@ class LoginController extends GetxController {
       final responseData = json.decode(response.body);
 
       if (response.statusCode == 200) {
-        final token = responseData['token'];
-        final userId = responseData['user_id'];
+        if (responseData['status_regis'] == '1') {
+          final token = responseData['token'];
+          final userId = responseData['user_id'];
+          final umur = responseData['umur'];
 
-        print(token);
-        // Simpan token ke SharedPreferences
-        await saveTokenToSharedPreferences(token, userId);
+          await saveTokenToSharedPreferences(token, userId, umur);
 
-        Get.snackbar('Success', 'Login successful');
-        Get.offAllNamed('/bottom-nav-bar');
+          Get.snackbar('Success', 'Login successful',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: Colors.green,
+              colorText: Colors.white);
+          Get.offAllNamed('/bottom-nav-bar');
+        } else {
+          Get.snackbar('Error',
+              'akun anda belum terverifikasi,silahkan check email atau hubungi admin',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: Colors.red,
+              colorText: Colors.white);
+        }
       } else {
         final errorMessage = responseData['message'];
         Get.snackbar('Error', errorMessage);
@@ -74,9 +84,11 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> saveTokenToSharedPreferences(String token, int userId) async {
+  Future<void> saveTokenToSharedPreferences(
+      String token, int userId, int umur) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
     await prefs.setString('user_id', userId.toString());
+    await prefs.setInt('umur', umur);
   }
 }

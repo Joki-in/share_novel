@@ -243,10 +243,6 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                     isExpanded: true,
                     items: const [
                       DropdownMenuItem(
-                        value: '',
-                        child: Text('Pilih Genre'),
-                      ),
-                      DropdownMenuItem(
                         value: 'fiksi',
                         child: Text('Fiksi'),
                       ),
@@ -257,6 +253,26 @@ class IsicreateshowView extends GetView<IsicreateshowController> {
                       DropdownMenuItem(
                         value: 'horor',
                         child: Text('Horor'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'komedi',
+                        child: Text('Komedi'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'aksi',
+                        child: Text('Aksi'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'romantis',
+                        child: Text('Romatis'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'misteri',
+                        child: Text('Misteri'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'kriminal',
+                        child: Text('Kriminal'),
                       ),
                     ],
                   ),

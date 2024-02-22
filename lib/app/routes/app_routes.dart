@@ -18,6 +18,8 @@ abstract class Routes {
   static const ISICREATESHOW = _Paths.ISICREATESHOW;
   static const UPDATE_ISI = _Paths.UPDATE_ISI;
   static const SPLASH = _Paths.SPLASH;
+  static const FAVORITE_PAGE = _Paths.FAVORITE_PAGE;
+  static const OTP_REGISTER = _Paths.OTP_REGISTER;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const ISICREATESHOW = '/isicreateshow';
   static const UPDATE_ISI = '/update-isi';
   static const SPLASH = '/splash';
+  static const FAVORITE_PAGE = '/favorite-page';
+  static const OTP_REGISTER = '/otp-register';
 }

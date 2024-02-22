@@ -4,6 +4,8 @@ import '../modules/UpdateIsi/bindings/update_isi_binding.dart';
 import '../modules/UpdateIsi/views/update_isi_view.dart';
 import '../modules/bottomNavBar/bindings/bottom_nav_bar_binding.dart';
 import '../modules/bottomNavBar/views/bottom_nav_bar_view.dart';
+import '../modules/favorite_page/bindings/favorite_page_binding.dart';
+import '../modules/favorite_page/views/favorite_page_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/forgotPassword/views/forgot_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -18,6 +20,8 @@ import '../modules/novelpage/bindings/novelpage_binding.dart';
 import '../modules/novelpage/views/novelpage_view.dart';
 import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
+import '../modules/otp_register/bindings/otp_register_binding.dart';
+import '../modules/otp_register/views/otp_register_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -113,6 +117,16 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAVORITE_PAGE,
+      page: () => const FavoritePageView(),
+      binding: FavoritePageBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP_REGISTER,
+      page: () => const OtpRegisterView(),
+      binding: OtpRegisterBinding(),
     ),
   ];
 }

@@ -53,4 +53,7 @@ class Api {
   static const String updateIsi = '${api}update-isi';
   static const String createIsi = '${api}create-isi';
   static const String updateCover = '${api}updatecover';
+
+  //favorite
+  static const String favorite = '${api}favoritebuku';
 }

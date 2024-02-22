@@ -24,7 +24,7 @@ class UpdateIsiView extends GetView<UpdateIsiController> {
                 keyboardType: TextInputType.multiline,
                 maxLines: 2,
                 decoration: const InputDecoration(
-                  hintText: 'Enter your text here...',
+                  hintText: 'Nama Chapter',
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.symmetric(
                       vertical: 20.0,
@@ -38,9 +38,9 @@ class UpdateIsiView extends GetView<UpdateIsiController> {
                 controller: controller.isiTextfieldController,
                 focusNode: controller.focusNode2,
                 keyboardType: TextInputType.multiline,
-                maxLines: 60,
+                maxLines: 10,
                 decoration: const InputDecoration(
-                  hintText: 'Enter your text here...',
+                  hintText: 'Tulis Isi Novel Disini',
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.symmetric(
                       vertical: 20.0,

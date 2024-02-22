@@ -118,6 +118,26 @@ class SearchPageView extends GetView<SearchPageController> {
                           value: 'horor',
                           child: Text('Horor'),
                         ),
+                        DropdownMenuItem(
+                          value: 'komedi',
+                          child: Text('Komedi'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'aksi',
+                          child: Text('Aksi'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'romantis',
+                          child: Text('Romatis'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'misteri',
+                          child: Text('Misteri'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'kriminal',
+                          child: Text('Kriminal'),
+                        ),
                       ],
                     ),
                   ),

@@ -32,14 +32,34 @@ class SliderWidget extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      "Like Terbanyak",
-                      style: GoogleFonts.openSans(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.black,
-                      ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Like Terbanyak",
+                          style: GoogleFonts.openSans(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/favorite-page");
+                          },
+                          child: Text("Favorite anda",
+                              style: GoogleFonts.openSans(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.blue,
+                              )),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                      ],
                     ),
                   ),
                 ),
