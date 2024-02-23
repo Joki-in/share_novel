@@ -20,13 +20,15 @@ class NovelpageController extends GetxController {
   RxList<Komentar> komentarList = <Komentar>[].obs;
   var novelPageChapter = Novelpagechapter().obs;
   RxString statuslike = ''.obs;
+  RxString batasan_buku = ''.obs;
   late String bookId;
   final TextEditingController commentTextController = TextEditingController();
-  // pemanggilan provider
+
   final KomentarProvider komentarProvider = KomentarProvider();
   final NovelPageBukuProvider novelPageBukuProvider = NovelPageBukuProvider();
   final NovelpagechapterProvider _novelpagechapterProvider =
       NovelpagechapterProvider();
+
   bool isPosting = false;
   int statuscode = 0;
 
@@ -58,7 +60,6 @@ class NovelpageController extends GetxController {
         throw Exception("Failed to fetch komentar");
       }
     } catch (e) {
-      // Handle error here
       print("Error fetching komentar: $e");
     }
   }
@@ -69,7 +70,7 @@ class NovelpageController extends GetxController {
     String? userId = prefs.getString('user_id');
     try {
       final response = await http.post(
-        Uri.parse(Api.pushLike), // Ganti dengan URL API sesuai kebutuhan Anda
+        Uri.parse(Api.pushLike),
         body: jsonEncode({
           'id_buku': idBuku,
           'id_user': userId,
@@ -94,7 +95,7 @@ class NovelpageController extends GetxController {
     String? userId = prefs.getString('user_id');
     try {
       final response = await http.post(
-        Uri.parse(Api.pushUnlike), // Ganti dengan URL API sesuai kebutuhan Anda
+        Uri.parse(Api.pushUnlike),
         body: jsonEncode({
           'id_buku': idBuku,
           'id_user': userId,
@@ -119,7 +120,7 @@ class NovelpageController extends GetxController {
     String? userId = prefs.getString('user_id');
     try {
       final response = await http.post(
-        Uri.parse(Api.checklike), // Ganti dengan URL sesuai kebutuhan Anda
+        Uri.parse(Api.checklike),
         body: {
           'id_buku': idBuku.toString(),
           'id_user': userId.toString(),
@@ -135,28 +136,38 @@ class NovelpageController extends GetxController {
           statuslike.value = 'none';
         }
       } else {
-        // Handle errors jika ada
         print(response.body);
         statuslike.value = 'error';
       }
     } catch (e) {
-      // Handle exceptions jika ada
       statuslike.value = 'error';
     }
   }
 
   void fetchNovelPageBuku() async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      int? umur = prefs.getInt('umur');
       final idBuku = int.tryParse(bookId);
       if (idBuku != null) {
         final novelpagebuku =
             await novelPageBukuProvider.getBukuDanPenulis(idBuku);
         novelPageBuku.value = novelpagebuku;
+        batasan_buku = novelpagebuku.bukus![0].i18.toString().obs;
+        print('$umur = $batasan_buku');
+        if ((umur! <= 0 || umur! < 18) && batasan_buku == '1') {
+          Get.defaultDialog(
+            title: "Peringatan",
+            content: Text("Anda belum cukup umur."),
+          );
+          await Future.delayed(Duration(seconds: 2));
+
+          Get.offAllNamed('/bottom-nav-bar');
+        }
       } else {
         throw Exception("Invalid bookId format");
       }
     } catch (e) {
-      // Handle error here
       print("Error fetching novel page buku: $e");
     }
   }
@@ -189,7 +200,6 @@ class NovelpageController extends GetxController {
       novelPageChapter.value = response;
     } catch (e) {
       print('Error: $e');
-      // Handle error as needed
     }
   }
 
@@ -208,27 +218,25 @@ class NovelpageController extends GetxController {
       final response = await http.post(
         Uri.parse(Api.postKomentar),
         body: {
-          'id_buku': idBuku, // Passed as String
-          'id_user': idUser, // Passed as String
+          'id_buku': idBuku,
+          'id_user': idUser,
           'komentar': commentTextController.text,
         },
       );
       if (response.statusCode == 201) {
         commentTextController.clear();
-        // Komentar berhasil dibuat
+
         print('Komentar created successfully');
       } else {
-        // Komentar gagal dibuat
         print('Failed to create komentar');
       }
 
       statuscode = response.statusCode;
     } catch (e) {
-      // Tangani kesalahan
       print('Error: $e');
     }
 
-    fetchKomentarByBukuId(int.tryParse(idBuku ?? '') ?? 0); // Convert to int
+    fetchKomentarByBukuId(int.tryParse(idBuku ?? '') ?? 0);
     update();
   }
 }
