@@ -34,6 +34,47 @@ class IsinovelView extends GetView<IsinovelController> {
             backgroundColor: ColorConstant.Primary,
             child: const Icon(Icons.play_arrow),
           ),
+          FloatingActionButton(
+            onPressed: () {
+              // Menampilkan dialog langsung saat tombol ditekan
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Pilih Jenis Kelamin'),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          title: Text('Male'),
+                          onTap: () {
+                            controller.pitchvalue.value = 0.7;
+                            Navigator.pop(context, 'Male');
+                          },
+                        ),
+                        ListTile(
+                          title: Text('Female'),
+                          onTap: () {
+                            controller.pitchvalue.value = 1.8;
+                            Navigator.pop(context, 'Female');
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ).then((value) {
+                // Di sini Anda dapat mengakses nilai yang dipilih setelah dialog ditutup
+                if (value != null) {
+                  print('Jenis kelamin yang dipilih: $value');
+                  // Lakukan sesuatu dengan nilai yang dipilih di sini
+                }
+              });
+            },
+            backgroundColor:
+                ColorConstant.Primary, // Ganti dengan warna yang sesuai
+            child: Icon(Icons.settings),
+          ),
         ],
       ),
       body: SingleChildScrollView(

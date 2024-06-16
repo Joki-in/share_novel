@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:share_novel/app/modules/utils/color_constant.dart';
 
@@ -51,6 +52,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
+            ),
+            Spacer(),
+            IconButton(
+              icon: Icon(Icons.favorite, color: Colors.red),
+              onPressed: () {
+                Get.toNamed("/favorite-page");
+              },
             ),
           ],
         ),

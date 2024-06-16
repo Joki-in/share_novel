@@ -9,6 +9,7 @@ class IsinovelController extends GetxController {
   final isiProvider = Get.put(IsiProvider());
   var idChapter;
 
+  var pitchvalue = 1.8.obs;
   final FlutterTts flutterTts = FlutterTts();
   bool isPaused = false;
 
@@ -42,9 +43,14 @@ class IsinovelController extends GetxController {
 
   // Method untuk mengubah isi menjadi speech
   Future<void> textToSpeech(String text) async {
-    await flutterTts.setLanguage("id-ID"); // Atur bahasa ke Indonesia
-    await flutterTts.setPitch(1); // Atur pitch
-    await flutterTts.speak(text); // Mulai pembacaan teks
+    await flutterTts.setVoice({
+      "name":
+          "id-id-x-dfe-local", // Male voice identifier for Indonesian language
+      "locale": "id-ID" // Set the locale to Indonesian
+    });
+    await flutterTts.setLanguage("id-ID"); // Set language to Indonesian
+    await flutterTts.setPitch(pitchvalue.value); // Set pitch (optional)
+    await flutterTts.speak(text); // Start text-to-speech
   }
 
   // Method untuk menjeda (pause) pembacaan teks
