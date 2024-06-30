@@ -1,5 +1,5 @@
 class Api {
-  static const String baseUrl = 'https://sharenovel.geniusprog.com/';
+  static const String baseUrl = 'https://sharenovel2.geniusprog.com/';
   static const String api = '${baseUrl}api/';
   //auth api
   static const String login = '${api}login';
