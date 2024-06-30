@@ -160,7 +160,7 @@ class NovelpageController extends GetxController {
             title: "Peringatan",
             content: Text("Anda belum cukup umur."),
           );
-          await Future.delayed(Duration(seconds: 2));
+          await Future.delayed(const Duration(seconds: 2));
 
           Get.offAllNamed('/bottom-nav-bar');
         }
