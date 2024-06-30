@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:share_novel/app/modules/home/views/home_view.dart';
 import 'package:share_novel/app/modules/profile/views/profile_view.dart';
 import 'package:share_novel/app/modules/searchPage/views/search_page_view.dart';
-import 'package:share_novel/app/modules/tambahNovel/views/tambah_novel_view.dart';
 
 class BottomNavBarController extends GetxController {
   var selectedIndex = 0.obs;
@@ -11,7 +10,6 @@ class BottomNavBarController extends GetxController {
   List<Widget> pages = [
     const HomeView(),
     const SearchPageView(),
-    const TambahNovelView(),
     const ProfileView(),
   ];
   @override

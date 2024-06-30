@@ -28,10 +28,6 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
               label: 'Search Novel',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'Kelola Novel',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profile',
             ),
