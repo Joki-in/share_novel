@@ -17,8 +17,7 @@ class IsinovelView extends GetView<IsinovelController> {
         lottieAssetPath: 'assets/booklogin.json',
       ),
       floatingActionButton: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceEvenly, // Mengatur jarak antara tombol
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             onPressed: () async {
@@ -36,7 +35,6 @@ class IsinovelView extends GetView<IsinovelController> {
           ),
           FloatingActionButton(
             onPressed: () {
-              // Menampilkan dialog langsung saat tombol ditekan
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -46,14 +44,14 @@ class IsinovelView extends GetView<IsinovelController> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         ListTile(
-                          title: Text('Male'),
+                          title: const Text('Laki-laki'),
                           onTap: () {
                             controller.pitchvalue.value = 0.7;
                             Navigator.pop(context, 'Male');
                           },
                         ),
                         ListTile(
-                          title: Text('Female'),
+                          title: const Text('Wanita'),
                           onTap: () {
                             controller.pitchvalue.value = 1.8;
                             Navigator.pop(context, 'Female');
@@ -64,15 +62,12 @@ class IsinovelView extends GetView<IsinovelController> {
                   );
                 },
               ).then((value) {
-                // Di sini Anda dapat mengakses nilai yang dipilih setelah dialog ditutup
                 if (value != null) {
                   print('Jenis kelamin yang dipilih: $value');
-                  // Lakukan sesuatu dengan nilai yang dipilih di sini
                 }
               });
             },
-            backgroundColor:
-                ColorConstant.Primary, // Ganti dengan warna yang sesuai
+            backgroundColor: ColorConstant.Primary,
             child: Icon(Icons.settings),
           ),
         ],
@@ -80,7 +75,7 @@ class IsinovelView extends GetView<IsinovelController> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start, // Align to the left
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
             Obx(() {
@@ -89,16 +84,14 @@ class IsinovelView extends GetView<IsinovelController> {
                   padding:
                       const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
                   child: Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align to the left
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
                         child: Center(
                           child: Text(
                             '${controller.isi.value.data![0].chapter}',
-                            textAlign: TextAlign.center, // Align to the left
+                            textAlign: TextAlign.center,
                             style: GoogleFonts.openSans(
-                              // Change font to Open Sans
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -108,9 +101,8 @@ class IsinovelView extends GetView<IsinovelController> {
                       SizedBox(height: 20),
                       Text(
                         '${controller.isi.value.data![0].isi}',
-                        textAlign: TextAlign.left, // Align to the left
+                        textAlign: TextAlign.left,
                         style: GoogleFonts.openSans(
-                          // Change font to Open Sans
                           fontSize: 18.0,
                         ),
                       ),
