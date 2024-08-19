@@ -39,7 +39,7 @@ class IsinovelView extends GetView<IsinovelController> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Pilih Jenis Kelamin'),
+                    title: Text('Pilih Suara'),
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
